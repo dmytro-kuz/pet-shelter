@@ -1,0 +1,84 @@
+<div class="nav-wrapper">
+  <div class="container">
+    <nav (click)="checkRoutes()" class="nav-container">
+      <div class="nav-logo">
+        <a *ngIf="landingPage; else routes" href="#">
+          <img class="nav-logo-img" src="/assets/img/logo/pets_logo.png" alt="pet-logo" />
+        </a>
+        <ng-template #routes>
+          <a routerLink="/"> <img class="nav-logo-img" src="/assets/img/logo/pets_logo.png" alt="pet-logo" /> </a>
+        </ng-template>
+      </div>
+      <div class="nav-routes">
+        <ul>
+          <li>
+            <div class="nav-donate">
+              <a routerLink="/donates" routerLinkActive="active-link">
+                <p>Як допомогти?</p>
+              </a>
+            </div>
+          </li>
+          <li>
+            <div class="nav-pets">
+              <a routerLink="/pets" routerLinkActive="active-link">
+                <p>Улюбленці</p>
+              </a>
+            </div>
+          </li>
+          <li class="route-hide">
+            <div class="nav-statistics">
+              <a routerLink="/statistic" routerLinkActive="active-link">
+                <p>Статистика</p>
+              </a>
+            </div>
+          </li>
+          <li class="route-hide">
+            <div class="nav-news">
+              <a routerLink="/news" routerLinkActive="active-link">
+                <p>Новини</p>
+              </a>
+            </div>
+          </li>
+          <li class="route-hide-contact">
+            <div class="nav-contacts">
+              <a routerLink="/contacts" routerLinkActive="active-link">
+                <p>Контакти</p>
+              </a>
+            </div>
+          </li>
+          <li class="nav-burger-paw">
+            <div (click)="toggleBurger()" class="nav-burger">
+              <img src="/assets/img/icons/burger-paw.svg" alt="burger-paw" />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+<div class="nav-burger-container"></div>
+
+<div *ngIf="burgerOn" class="burger-paw-window">
+  <div class="burger-paw-container">
+    <div (click)="toggleBurger()" class="burger-paw-close">
+      <mat-icon>close</mat-icon>
+    </div>
+    <div class="burger-paw-links">
+      <a (click)="toggleBurger()" class="burger-paw-link" routerLink="/donates">
+        <h4>Як допомогти?</h4>
+      </a>
+      <a (click)="toggleBurger()" class="burger-paw-link" routerLink="/pets">
+        <h4>Улюбленці</h4>
+      </a>
+      <a (click)="toggleBurger()" class="burger-paw-link" routerLink="/statistic">
+        <h4>Статистика</h4>
+      </a>
+      <a (click)="toggleBurger()" class="burger-paw-link" routerLink="/news">
+        <h4>Новини</h4>
+      </a>
+      <a (click)="toggleBurger()" class="burger-paw-link" routerLink="/contacts">
+        <h4>Контакти</h4>
+      </a>
+    </div>
+  </div>
+</div>

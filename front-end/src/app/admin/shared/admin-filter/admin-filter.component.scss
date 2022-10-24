@@ -1,0 +1,76 @@
+@import '/src/styles/variables.scss';
+
+.pets-filter-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 0.6rem;
+
+  .mat-form-field {
+    max-width: 100%;
+
+    @media (max-width: 505px) {
+      width: 100%;
+    }
+  }
+
+  .pets-filter-input,
+  .pets-filter-search {
+    border-radius: 16px;
+    font-family: $roboto-font;
+    padding: 0.2rem;
+
+    @media (max-width: 505px) {
+      width: 100%;
+    }
+  }
+}
+
+.filter-buttons-wrapper {
+  height: 44px;
+  align-self: center;
+  padding: -0.2rem;
+  margin: 0.2rem 0.2rem 0.2rem 0.9rem;
+
+  button {
+    height: 100%;
+  }
+
+  button + button {
+    margin-left: 1.2rem;
+  }
+}
+
+.opened {
+  background: $section-color;
+}
+
+.search {
+  padding: 0.2rem;
+
+  @media (max-width: 475px) {
+    width: 100%;
+  }
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: flex-end;
+
+  .filter-btn {
+    border: 1px solid $second-color;
+    max-width: fit-content;
+  }
+}
+
+::ng-deep .mat-form-field.mat {
+  font-size: 12px; // example
+}
+
+::ng-deep .datapicker .mat-date-range-input-container {
+  font-size: 14px;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+  padding: 0 !important;
+}

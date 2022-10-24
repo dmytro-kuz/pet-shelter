@@ -1,0 +1,41 @@
+<div id="contacts-map">
+  <div class="container">
+    <div class="contacts-map-wrapper">
+      <div class="contacts-map">
+        <h4>Наші контакти</h4>
+        <div class="contacts-map-text">
+          <p class="map-address">Україна: 58000, Чернівці,вул. Б.Хмельницького, 8/99</p>
+          <div class="contacts-map-tel">
+            <a class="map-tel" href="tel:+380433323910"
+              ><img src="../../../../../assets/img/icons/phone.svg" alt="phone-number" />+38(043) 332 39 10</a
+            >
+            <a class="map-tel" href="tel:+380503323920"
+              ><img src="../../../../../assets/img/icons/phone.svg" alt="phone-number" />+38(050) 332 39 20</a
+            >
+            <a class="map-mail" href="mailto:shelter_cv@gmail.com?subject=question from site"
+              ><img src="../../../../../assets/img/icons/mail.svg" alt="mail" />shelter_cv@gmail.com</a
+            >
+            <a
+              class="get-direction"
+              href="https://www.google.com/maps/dir//%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%91%D0%BE%D0%B3%D0%B4%D0%B0%D0%BD%D0%B0+%D0%A5%D0%BC%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D1%86%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE,+%D0%A7%D0%B5%D1%80%D0%BD%D1%96%D0%B2%D1%86%D1%96,+%D0%A7%D0%B5%D1%80%D0%BD%D1%96%D0%B2%D0%B5%D1%86%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,+58000/@48.2957237,25.9213082,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4734089c51b5c475:0x9cf1a827b134ad84!2m2!1d25.930063!2d48.2957098?hl=uk-UK"
+              target="_blank"
+            >
+              <img src="../../../../../assets/img/icons/location.svg" alt="location" />Побудувати маршрут</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-spinner *ngIf="loading$ | async"></app-spinner>
+  <iframe
+    class="map spinner-position"
+    src="https://www.google.com/maps/embed?pb=!1m19!1m8!1m3!1d1556.5969471004553!2d25.927898053522213!3d48.29483212322206!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x4734089c51b5c475%3A0x9cf1a827b134ad84!2z0LLRg9C70LjRhtGPINCR0L7Qs9C00LDQvdCwINCl0LzQtdC70YzQvdC40YbRjNC60L7Qs9C-LCDQp9C10YDQvdGW0LLRhtGWLCDQp9C10YDQvdGW0LLQtdGG0YzQutCwINC-0LHQu9Cw0YHRgtGMLCA1ODAwMA!3m2!1d48.2957098!2d25.930063!5e0!3m2!1suk!2sua!4v1661345275014!5m2!1suk!2sua"
+    width="600"
+    height="450"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>

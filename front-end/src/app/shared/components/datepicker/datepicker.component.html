@@ -1,0 +1,32 @@
+<form *ngIf="reservedDatesForm" [formGroup]="reservedDatesForm">
+  <mat-form-field class="calendar-preview">
+    <mat-label>{{ label }}</mat-label>
+    <mat-date-range-input
+      [dateFilter]="myFilter"
+      [rangePicker]="picker"
+      [min]="minCalendarDate"
+      [max]="maxCalendarDate"
+      [comparisonStart]="startOverstay"
+      [comparisonEnd]="endOverstay"
+    >
+      <input
+        formControlName="overstayStart"
+        matStartDate
+        placeholder="Початкова"
+        (dateChange)="startDateChanged($event)"
+      />
+      <input formControlName="overstayEnd" matEndDate placeholder="Кінцева" (dateChange)="getOverstayDates()" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker" (click)="clearAndChangeReservedDates()"></mat-datepicker-toggle>
+    <mat-date-range-picker [startAt]="startOverstay" #picker></mat-date-range-picker>
+    <mat-error
+      *ngIf="
+        this.reservedDatesForm.controls['overstayStart'].touched &&
+        (this.reservedDatesForm.controls['overstayStart'].invalid ||
+          this.reservedDatesForm.controls['overstayEnd'].invalid)
+      "
+    >
+      Це поле не може бути пустим
+    </mat-error>
+  </mat-form-field>
+</form>

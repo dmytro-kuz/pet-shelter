@@ -1,0 +1,12 @@
+# IDE related rules
+.idea
+.vscode
+.DS_Store
+
+# front-end related rules
+node_modules
+.husky
+.angular
+dist
+
+

@@ -1,0 +1,26 @@
+@import 'src/styles/variables.scss';
+
+h2 {
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  margin-bottom: 50px;
+  @media (max-width: $small-tablet) {
+    margin-bottom: 0px;
+  }
+}
+
+.list-wrapper {
+  width: 100%;
+  &:last-child {
+    margin-bottom: 100px;
+  }
+}
+
+.news-item {
+  padding: 20px 0 0;
+  margin-bottom: 10px;
+  &:nth-child(even) {
+    background-color: #faf5e6;
+  }
+}

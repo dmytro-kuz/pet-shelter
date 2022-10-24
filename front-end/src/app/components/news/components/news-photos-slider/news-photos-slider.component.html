@@ -1,0 +1,17 @@
+<ng-template #photoslider>
+  <div class="splide__track">
+    <ul class="splide__list">
+      <li class="splide__slide" *ngFor="let photo of photos">
+        <img src="{{ photo }}" alt="pet's photo" />
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<section id="main-carousel{{ uId }}" class="splide main-carousel">
+  <ng-container *ngTemplateOutlet="photoslider"></ng-container>
+</section>
+
+<section id="thumbnails-carousel{{ uId }}" class="splide thumbnail-carousel">
+  <ng-container *ngTemplateOutlet="photoslider"></ng-container>
+</section>

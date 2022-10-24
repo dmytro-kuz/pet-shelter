@@ -1,0 +1,102 @@
+<div class="title-container">
+  <h1>Новини</h1>
+  <h2 *ngIf="!isEditNews">Деталі</h2>
+  <h2 *ngIf="isEditNews">Редагувати</h2>
+</div>
+
+<mat-card class="news-content">
+  <div *ngIf="!isEditNews" class="news-content__info">
+    <p class="content__titles">Заголовок</p>
+    <h3>{{ newsDetail.title }}</h3>
+    <p class="content__titles">Підзаголовок</p>
+    <h4>{{ newsDetail.subtitle }}</h4>
+    <p class="content__titles">Текст статті</p>
+    <p class="text-body">{{ newsDetail.text }}</p>
+    <div class="btn-container">
+      <button (click)="deletePetMidleware()" mat-stroked-button color="warn">Видалити</button>
+      <button (click)="showEditForm('editNews')" mat-stroked-button color="primary">Редагувати</button>
+    </div>
+  </div>
+
+  <div *ngIf="isEditNews">
+    <form *ngIf="newsDetailForm" [formGroup]="newsDetailForm" class="form-container" (ngSubmit)="editNews()">
+      <div
+        *ngFor="let item of newsModalValue.input; let isLast = last"
+        [ngClass]="{ 'child-last': isLast }"
+        class="edit-input"
+      >
+        <mat-form-field id="edit" appearance="outline">
+          <mat-label>{{ item.controlKey }}</mat-label>
+          <input
+            type="{{ item.type }}"
+            matInput
+            formControlName="{{ item.controlName }}"
+            placeholder="{{ item.placeholder }}"
+          />
+        </mat-form-field>
+      </div>
+      <div *ngIf="newsModalValue.textarea">
+        <mat-form-field id="edit-textarea" appearance="outline">
+          <mat-label>{{ newsModalValue.textarea.controlKey }}</mat-label>
+          <textarea
+            matInput
+            rows="16"
+            formControlName="{{ newsModalValue.textarea.controlName }}"
+            placeholder="{{ newsModalValue.textarea.placeholder }}"
+          >
+          {{ newsDetail.text }} 
+          </textarea>
+        </mat-form-field>
+      </div>
+      <div class="edit-btn">
+        <div class="btn-container">
+          <button (click)="showEditForm('editNews')" mat-stroked-button color="warn">Скасувати</button>
+          <button type="submit" mat-stroked-button color="primary">Зберегти зміни</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div (click)="toggleShowMore('photo')" class="show-more-photo">
+    <h3>Галерея</h3>
+    <button mat-button class="show-details">
+      <mat-icon *ngIf="!showMorePhoto">keyboard_arrow_down</mat-icon>
+      <mat-icon *ngIf="showMorePhoto">keyboard_arrow_up</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="showMorePhoto" class="photo">
+    <div class="photo-galery">
+      <p *ngIf="newsDetail.photos.length == 0 && !isEditNews" class="empty-photo-message">Поки що нічого немає</p>
+      <div class="galary-cards" *ngFor="let photo of newsDetail.photos; index as i">
+        <div class="galary-card">
+          <img src="{{ photo }}" alt="photo{{ i }}" />
+          <div *ngIf="isEditNews" class="card-buttons">
+            <button (click)="changePhoto.click()" mat-button class="show-details">
+              <input #changePhoto (input)="editPhoto($event, photo)" type="file" style="display: none" />
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deletePhoto(photo)" mat-button class="show-details">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="galary-card card-add" *ngIf="isEditNews">
+        <form class="upload-file" enctype="multipart/form-data">
+          <mat-icon *ngIf="photosCount === 0" (click)="uploadFile.click()">attach_file</mat-icon>
+          <ul *ngIf="photosCount !== 0">
+            <li *ngFor="let photoName of photosSelectArray">
+              <mat-icon (click)="clearFilePhotoList(photoName)">clear</mat-icon> {{ photoName }}
+            </li>
+          </ul>
+          <input #uploadFile (input)="uploadNewFormPhoto($event)" type="file" multiple style="display: none" />
+          <p *ngIf="photosCount === 0; else chooseFile" (click)="uploadFile.click()">Виберіть фото</p>
+          <ng-template #chooseFile>
+            <p>Обрано файлів: {{ photosCount }}</p>
+            <button type="button" (click)="addNewPhoto()" mat-raised-button>Зберегти фото</button>
+          </ng-template>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>

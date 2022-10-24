@@ -1,0 +1,172 @@
+@import '../../../styles/variables';
+
+.nav-wrapper {
+  width: 100%;
+  background-color: $second-color;
+  margin: auto;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+}
+
+.container {
+  background-color: $second-color;
+}
+
+h4 {
+  margin-bottom: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  cursor: pointer;
+}
+
+.active-link {
+  color: $main-color;
+  font-weight: bold !important;
+  position: relative;
+
+  & ::after {
+    content: '';
+    width: 38px;
+    height: 35px;
+    position: absolute;
+    top: -8px;
+    left: -28px;
+    transform: scale(0.4);
+    background-image: url(../../../assets/img/icons/paw.svg);
+  }
+}
+
+.nav-container {
+  height: 75px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: $typo-color;
+}
+
+.nav-logo {
+  margin-left: 0.25rem;
+  width: 75px;
+  height: 75px;
+
+  @media (max-width: 425px) {
+    margin: 0;
+    width: 55px;
+    height: 55px;
+  }
+
+  .nav-logo-img {
+    margin: 0.5rem 0.25rem 0 0.25rem;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    box-shadow: 0px -2px 2px 7px $second-color;
+
+    @media (max-width: 425px) {
+      margin: 0;
+      box-shadow: none;
+    }
+  }
+}
+
+.nav-routes {
+  ul {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @media (max-width: $tablet) {
+      :last-child {
+        display: block;
+      }
+    }
+
+    li {
+      margin-left: 3rem;
+
+      @media (max-width: $tablet) {
+        margin-left: 1.25rem;
+      }
+
+      @media (max-width: 401px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: $tablet) {
+      .route-hide {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $semi-mobile) {
+  .route-hide-contact {
+    display: none;
+  }
+}
+
+.nav-burger-paw {
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: block;
+  }
+}
+
+.burger-paw-window {
+  width: 100%;
+  height: 100%;
+  background-color: $main-color;
+  z-index: 99;
+  position: fixed;
+  overflow-y: auto;
+}
+
+.burger-paw-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .burger-paw-links {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    align-self: center;
+  }
+}
+
+.burger-paw-link h4 {
+  margin-bottom: 2rem;
+}
+
+.burger-paw-link {
+  &:hover {
+    color: $second-color;
+  }
+}
+
+.nav-burger {
+  cursor: pointer;
+}
+
+.burger-paw-close {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 45px;
+  font-family: 'roboto';
+  cursor: pointer;
+}

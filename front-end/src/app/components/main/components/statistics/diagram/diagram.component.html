@@ -1,0 +1,19 @@
+<div *ngIf="donates$ | async as donates">
+  <ngx-charts-bar-vertical-2d
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="donates"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [legendPosition]="legendPosition"
+    [barPadding]="-15"
+    [groupPadding]="-15"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="''"
+    [yAxisLabel]="''"
+    [legendTitle]="''"
+  >
+  </ngx-charts-bar-vertical-2d>
+</div>

@@ -1,0 +1,218 @@
+<ng-template #calendar>
+  <mat-card class="demo-inline-calendar-card">
+    <h4>Календар перетримок</h4>
+    <mat-calendar [dateFilter]="calendarFilter"></mat-calendar>
+  </mat-card>
+</ng-template>
+
+<mat-card class="card">
+  <div class="card-content">
+    <mat-card-subtitle>
+      <div class="subtitle-image">
+        <img
+          [src]="petDetail.photos[0] || '/assets/img/animal-shelter-placeholder.png'"
+          alt=" {{ petDetail.type + ' ' + petDetail.name }}"
+        />
+      </div>
+    </mat-card-subtitle>
+
+    <mat-card-content>
+      <app-spinner *ngIf="loading$ | async"></app-spinner>
+      <div class="pet-detail-content spinner-position">
+        <div *ngIf="!isEditPet" class="content-tittle">
+          <p><span>Ім'я</span></p>
+          <p><span>Стать</span></p>
+          <p><span>Порода</span></p>
+          <p><span>Народився</span></p>
+          <p><span>Розмір</span></p>
+          <p><span>Вид</span></p>
+          <p><span>Статус</span></p>
+          <button (click)="deletePet()" mat-stroked-button color="warn">Видалити</button>
+        </div>
+        <div *ngIf="!isEditPet" class="content-info">
+          <p>{{ petDetail.name || 'Невідомо' }}</p>
+          <p>{{ petDetail.sex || 'Невідомо' }}</p>
+          <p>{{ petDetail.breed || 'Невідомо' }}</p>
+          <p>{{ birthDate || 'Невідомо' }}</p>
+          <p>{{ petDetail.size || 'Невідомо' }}</p>
+          <p>{{ petDetail.type || 'Невідомо' }}</p>
+          <p>{{ petDetail.status || 'Невідомо' }}</p>
+          <button (click)="showEditForm('editPet')" mat-stroked-button color="primary">Редагувати</button>
+        </div>
+        <div *ngIf="isEditPet" class="pet-detail-edit">
+          <div class="content-form">
+            <form *ngIf="petDetailForm" [formGroup]="petDetailForm" class="form-container" (ngSubmit)="editPet()">
+              <div *ngFor="let item of petModalValue.input" class="edit-input">
+                <mat-form-field class="edit" appearance="outline">
+                  <mat-label>{{ item.controlKey }}</mat-label>
+                  <input
+                    type="{{ item.type }}"
+                    matInput
+                    formControlName="{{ item.controlName }}"
+                    placeholder="{{ item.placeholder }}"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="edit-datapicker">
+                <mat-form-field class="edit" appearance="outline">
+                  <mat-label>
+                    {{ petModalValue.datepicker.controlKey }}
+                  </mat-label>
+                  <input
+                    matInput
+                    [min]="minDate"
+                    [max]="maxDate"
+                    [matDatepicker]="picker"
+                    formControlName="{{ petModalValue.datepicker.controlName }}"
+                  />
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div *ngFor="let item of petModalValue.select" class="edit-select">
+                <mat-form-field class="edit" appearance="outline">
+                  <mat-label>{{ item.controlKey }}</mat-label>
+                  <mat-select formControlName="{{ item.controlName }}" disableOptionCentering>
+                    <mat-option *ngFor="let value of item.controlValue" value="{{ value }}">{{ value }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="edit-btn">
+                <button (click)="showEditForm('editPet')" mat-stroked-button color="warn">Скасувати</button>
+                <button type="submit" [disabled]="onSubmitBtnLock" mat-stroked-button color="primary">
+                  Зберегти зміни
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+    <div class="calendar-hide">
+      <ng-container *ngTemplateOutlet="calendar"></ng-container>
+    </div>
+  </div>
+
+  <mat-card-actions class="show-more">
+    <div class="show-more-content">
+      <div (click)="toggleShowMore('calendar')" class="show-more-calendar">
+        <h3>Календар перетримок</h3>
+        <button mat-button class="showDetails">
+          <mat-icon *ngIf="!showMoreCalendar">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="showMoreCalendar">keyboard_arrow_up</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="showMoreCalendar">
+        <ng-container *ngTemplateOutlet="calendar"></ng-container>
+      </div>
+      <div (click)="toggleShowMore('info')" class="show-more-info">
+        <h3>Додаткова інформація</h3>
+        <button mat-button class="showDetails">
+          <mat-icon *ngIf="!showMoreInfo">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="showMoreInfo">keyboard_arrow_up</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="showMoreInfo" class="show-more-description">
+        <p *ngIf="!isEditPetDescription">{{ petDetail.description }}</p>
+        <div *ngIf="isEditPetDescription">
+          <form *ngIf="petDetailForm" [formGroup]="petDetailForm" class="form-container" (ngSubmit)="editPet()">
+            <div>
+              <mat-form-field class="petDescription-textarea" appearance="outline">
+                <mat-label>{{ petModalValue.textarea.controlKey }}</mat-label>
+                <textarea
+                  class="textarea"
+                  rows="8"
+                  matInput
+                  placeholder="{{ petModalValue.textarea.placeholder }}"
+                  formControlName="{{ petModalValue.textarea.controlName }}"
+                  >{{ petDetail.description }} </textarea
+                >
+              </mat-form-field>
+            </div>
+            <button
+              *ngIf="isEditPetDescription"
+              (click)="showEditForm('editPetDescription')"
+              mat-stroked-button
+              color="warn"
+            >
+              Відмінити
+            </button>
+            <button
+              *ngIf="isEditPetDescription"
+              [disabled]="onSubmitBtnLock"
+              type="submit"
+              mat-stroked-button
+              color="primary"
+            >
+              Зберегти зміни
+            </button>
+          </form>
+        </div>
+        <button
+          *ngIf="!isEditPetDescription"
+          (click)="showEditForm('editPetDescription')"
+          mat-stroked-button
+          color="primary"
+        >
+          Редагувати
+        </button>
+      </div>
+
+      <div (click)="toggleShowMore('photo')" class="show-more-photo">
+        <h3>Галерея</h3>
+        <button mat-button class="showDetails">
+          <mat-icon *ngIf="!showMorePhoto">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="showMorePhoto">keyboard_arrow_up</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="showMorePhoto" class="photo">
+        <div class="photo-galery">
+          <div class="galary-cards" *ngFor="let photo of petDetail.photos; index as i">
+            <div class="galary-card">
+              <img src="{{ photo }}" alt="photo{{ i }}" />
+              <div class="card-buttons">
+                <button (click)="changePhoto.click()" mat-button class="showDetails">
+                  <input
+                    #changePhoto
+                    (input)="editPhoto($event, photo)"
+                    type="file"
+                    accept="image/png, image/webp, image/jpeg, image/jpg"
+                    style="display: none"
+                  />
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="deletePhoto(photo)" mat-button class="showDetails">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <form class="upload-file" enctype="multipart/form-data">
+            <div (click)="uploadFile.click()" class="galary-card card-add">
+              <mat-icon *ngIf="photosCount === 0">attach_file</mat-icon>
+              <ul *ngIf="photosCount !== 0">
+                <li *ngFor="let photoName of photosSelectArray">
+                  <mat-icon class="photo-name-clear" (click)="clearFilePhotoList(photoName, $event)">clear</mat-icon>
+                  <p class="photo-name">{{ photoName }}</p>
+                </li>
+              </ul>
+              <input
+                #uploadFile
+                (input)="uploadNewFormPhoto($event)"
+                type="file"
+                accept="image/png, image/webp, image/jpeg, image/jpg"
+                multiple
+                style="display: none"
+              />
+              <p *ngIf="photosCount === 0; else chooseFile">Виберіть фото</p>
+              <ng-template #chooseFile>
+                <p>Обрано файлів: {{ photosCount }}</p>
+                <button type="button" (click)="addNewPhoto($event)" mat-raised-button>Зберегти фото</button>
+              </ng-template>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

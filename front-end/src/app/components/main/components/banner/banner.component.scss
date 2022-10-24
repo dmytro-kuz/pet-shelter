@@ -1,0 +1,121 @@
+@import 'src/styles/variables.scss';
+
+* {
+  font-family: $balsamiq-font;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+.banner-container {
+  background-color: $main-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 75px);
+
+  .image,
+  .content {
+    width: 50%;
+  }
+
+  .image {
+    height: 100%;
+
+    .img {
+      background-image: url('/assets/banner/Main_title_img.png');
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      background-position: center;
+    }
+  }
+
+  .content {
+    padding-left: 4.375rem;
+    font-weight: 600;
+
+    h1 {
+      margin-bottom: 1.875rem;
+      max-width: 500px;
+      line-height: 50px;
+      color: $second-color;
+    }
+
+    p {
+      line-height: 1.5rem;
+    }
+
+    .description {
+      max-width: 500px;
+      font-size: 15px;
+      color: $second-color;
+
+      .center {
+        text-align: center;
+        margin-top: 3.25rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $container) {
+  .banner-container {
+    background-color: unset;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-image: url('/assets/banner/Main_title_img.png');
+      background-size: cover;
+      background-position: center;
+      filter: blur(5px);
+    }
+
+    .image {
+      display: none;
+    }
+
+    .content {
+      text-align: center;
+      width: 100%;
+      padding: 0 0.625rem;
+      color: $main-color;
+
+      h1 {
+        margin: 0;
+        width: 100%;
+        max-width: unset;
+        color: $main-color;
+      }
+
+      .description {
+        margin: 0;
+        max-width: unset;
+        color: $main-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .description {
+    color: $main-color;
+
+    p {
+      display: none;
+    }
+  }
+}

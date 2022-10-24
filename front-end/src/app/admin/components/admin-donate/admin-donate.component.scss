@@ -1,0 +1,14 @@
+@import '../../../../styles/variables.scss';
+
+.notification-msg {
+  font-family: $roboto-font;
+  max-width: fit-content;
+  margin: 1rem 0 -1.6rem auto;
+  display: flex;
+  align-items: center;
+  color: $second-color;
+
+  mat-icon {
+    color: $main-color;
+  }
+}

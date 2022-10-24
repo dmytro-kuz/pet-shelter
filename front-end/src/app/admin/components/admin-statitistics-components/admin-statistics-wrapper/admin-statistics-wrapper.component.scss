@@ -1,0 +1,21 @@
+@import '/src/styles/variables.scss';
+
+.navigation {
+  a {
+    margin-right: 1.875rem;
+  }
+  a.active {
+    color: $main-color;
+  }
+}
+@media screen and (max-width: $container) {
+  a {
+    margin-left: 2.5rem;
+  }
+}
+@media screen and (max-width: $less-tablet) {
+  a {
+    display: block;
+    margin-top: 0.625rem;
+  }
+}

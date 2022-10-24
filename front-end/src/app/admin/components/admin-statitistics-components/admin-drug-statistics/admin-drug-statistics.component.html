@@ -1,0 +1,63 @@
+<div class="drugs">
+  <h2>Ліки</h2>
+
+  <form *ngIf="drugForm" class="example-form" [formGroup]="drugForm" #formDirective="ngForm">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Назва препарату</mat-label>
+      <input matInput type="text" matInput formControlName="name" />
+      <mat-error *ngIf="drugForm.invalid">Назва ліків обов'язкова</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Ціна в гривнях</mat-label>
+      <input type="number" matInput formControlName="number" />
+      <mat-error *ngIf="drugForm.invalid">Ціна обов'язкова</mat-error>
+    </mat-form-field>
+    <label class="example-margin"></label>
+    <mat-radio-group formControlName="status">
+      <mat-radio-button class="example-margin" value="придбано">Придбано</mat-radio-button>
+      <mat-radio-button class="example-margin" value="потрібно">Потрібно</mat-radio-button>
+    </mat-radio-group>
+    <div class="buttons">
+      <button
+        mat-raised-button
+        class="button-default"
+        type="button"
+        (click)="onSubmitDrug(drugForm, '/statistics/add-drug')"
+      >
+        <span>Додати</span>
+      </button>
+      <button (click)="resetForm()" type="reset" mat-raised-button class="button-reset"><span>Очистити</span></button>
+    </div>
+  </form>
+  <div class="change-count">
+    <h2>Змінити кількість ліків на одну тварину (в пачках)</h2>
+    <div class="form">
+      <form
+        *ngIf="countDrugForm"
+        class="example-form"
+        [formGroup]="countDrugForm"
+        (ngSubmit)="onSubmitCount(countDrugForm)"
+      >
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input type="number" matInput formControlName="count" />
+        </mat-form-field>
+        <div class="buttons">
+          <button mat-raised-button class="button-default change"><span>Змінити</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="amount">
+    <span> За останній місяць на ліки загалом витрачено: {{ drugAmount }} грн </span>
+  </div>
+  <app-admin-filter [filterParams]="filterParams" (filterChange)="onFilterChange($event)"></app-admin-filter>
+  <app-content-table
+    *ngIf="{ content: tableData$ | async, pagination: pagination$ | async } as values"
+    [values]="values"
+    [data]="dataDrug"
+    (sortChange)="onSortChange($event)"
+    (PaginationChange)="onPaginationChange($event)"
+  >
+  </app-content-table>
+</div>

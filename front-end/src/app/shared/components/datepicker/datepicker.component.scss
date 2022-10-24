@@ -1,0 +1,21 @@
+@import 'src/styles/variables.scss';
+
+.mat-form-field {
+  width: 100%;
+}
+
+::ng-deep mat-datepicker-content {
+  margin-left: -1.5rem;
+}
+
+@media (max-width: $mobile) {
+  ::ng-deep mat-datepicker-content {
+    margin-left: 2rem;
+  }
+}
+
+@media (max-width: $small-mobile) {
+  ::ng-deep mat-datepicker-content {
+    margin-left: 0.4rem;
+  }
+}

@@ -1,0 +1,85 @@
+<div mat-dialog-content class="client-pet-container spinner-position">
+  <app-spinner *ngIf="loading$ | async"></app-spinner>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="card-title">{{ cardTitle }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form *ngIf="clientPetForm" [formGroup]="clientPetForm" class="form-container">
+        <div class="row">
+          <mat-form-field class="full-width">
+            <mat-label>Ваші дані</mat-label>
+            <input formControlName="clientName" matInput placeholder="Ім'я Прізвище" />
+            <mat-error *ngIf="validControl('clientName')">
+              {{ getErrorMessage('clientName') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="full-width">
+            <mat-label>Електронна адреса</mat-label>
+            <input formControlName="clientEmail" matInput placeholder="your.email@email.com" />
+            <mat-error *ngIf="validControl('clientEmail')">
+              {{ getErrorMessage('clientEmail') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="full-width">
+            <mat-label>Телефон</mat-label>
+            <input
+              mask="(000)000-0000"
+              prefix="+38"
+              [showMaskTyped]="true"
+              [dropSpecialCharacters]="false"
+              placeHolderCharacter="_"
+              formControlName="clientPhone"
+              matInput
+            />
+            <mat-error *ngIf="validControl('clientPhone')">
+              {{ getErrorMessage('clientPhone') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="formType === 'overstay'" class="row">
+          <app-datepicker [pickerData]="pickerData"></app-datepicker>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="full-width">
+            <mat-label>Про вас</mat-label>
+            <textarea
+              formControlName="clientInformation"
+              matInput
+              rows="5"
+              placeholder="Напишіть декілька слів про себе, та чому ви хочете взяти тварину?"
+            >
+            </textarea>
+            <mat-error *ngIf="validControl('clientInformation')">
+              {{ getErrorMessage('clientInformation') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-hint class="hint-text">* Обов'язкові поля</mat-hint>
+        <div class="form-buttons">
+          <button *ngIf="formType === 'adopt'" mat-raised-button color="primary" type="button" (click)="submitAdopt()">
+            Надіслати
+          </button>
+          <button
+            *ngIf="formType === 'overstay'"
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="submitOverstay()"
+          >
+            Надіслати
+          </button>
+          <button mat-raised-button color="warn" type="button" (click)="closeDialog()">Закрити</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

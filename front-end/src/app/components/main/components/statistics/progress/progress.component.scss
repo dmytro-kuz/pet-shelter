@@ -1,0 +1,63 @@
+@import '/src/styles/variables.scss';
+
+.progress-bar {
+  .item {
+    padding-top: 0.938rem;
+
+    .item-bar {
+      width: 100%;
+      border-radius: 4px;
+      box-sizing: border-box;
+      outline: 1px solid;
+
+      .progress {
+        height: 20px;
+        color: white;
+        text-align: center;
+        padding: 1.25rem 0 1.875rem;
+
+        span {
+          margin-left: auto;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.legend {
+  display: flex;
+  margin-top: 1.25rem;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 10px;
+}
+
+.legend .legend-item {
+  margin-right: 1.25rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.legend .legend-item .color {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.313rem;
+  border-radius: 4px;
+  display: block;
+}
+
+@media screen and (max-width: $container) {
+  .legend {
+    margin: 0.625rem 0 0 0;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: space-between;
+
+    .legend-item {
+      width: 50%;
+      margin-right: 0;
+      margin-top: 0.313rem;
+    }
+  }
+}

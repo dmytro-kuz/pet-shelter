@@ -1,0 +1,89 @@
+@import '/src/styles/variables.scss';
+
+section {
+  min-height: calc(100vh - 75px);
+}
+
+.pets-list {
+  position: relative;
+
+  .pets-list-title-wrapper {
+    text-align: center;
+    padding-bottom: 1rem;
+
+    .title-text {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .pets-list-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    justify-content: space-between;
+    margin-top: 0.2rem;
+
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 500px) {
+      grid-template-columns: 1fr;
+    }
+
+    .pet {
+      padding: 0.6rem;
+    }
+  }
+}
+
+.pets-list-button-wrapper {
+  width: fit-content;
+  margin-left: auto;
+
+  @media (max-width: $tablet) {
+    margin: auto;
+  }
+
+  .pets-list-button {
+    width: 180px;
+    background: $second-color;
+    font-size: 1rem;
+    border-radius: 8px;
+    color: $typo-color;
+    margin-top: 1rem;
+
+    &:hover {
+      background: $main-color;
+      border: 1px solid $second-color;
+      color: $second-color;
+    }
+  }
+}
+
+.paginator-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  font-size: 12px;
+}
+
+.empty-table-wrapper {
+  color: $shelter-admin-grey;
+  padding: 1rem 0;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+
+  .empty-table-msg {
+    text-align: center;
+  }
+
+  mat-icon {
+    width: auto;
+    font-size: 56px;
+  }
+}

@@ -1,0 +1,67 @@
+@import 'src/styles/variables.scss';
+
+.main-details-section {
+  display: flex;
+  gap: 20px;
+}
+
+.main-details-params {
+  min-width: 170px;
+}
+
+p {
+  margin: 0.4rem;
+}
+
+.detail-value {
+  font-weight: 500;
+}
+
+.box-detail-value {
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+}
+
+.text-info-box {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 100%;
+  height: 130px;
+  margin-top: 0.6rem;
+  margin-bottom: 1.5rem;
+  overflow: auto;
+}
+
+.detail-value-small {
+  display: none;
+}
+
+@media (max-width: $semi-mobile) {
+  .main-details-params {
+    width: 100%;
+  }
+
+  .detail-value-small {
+    display: block;
+    font-weight: 500;
+    padding-left: 3rem;
+  }
+
+  .main-details-addition {
+    margin-top: 1rem;
+  }
+
+  p {
+    margin: 0.2rem;
+  }
+
+  .main-details-value {
+    display: none;
+  }
+}
+
+@media (max-width: $mobile) {
+  .detail-value-small {
+    padding-left: 2rem;
+  }
+}

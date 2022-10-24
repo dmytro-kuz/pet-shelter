@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="pet-detail">
+    <div class="pet-detail__title">
+      <h2>Знайди собі друга</h2>
+    </div>
+    <div class="pet-detail__content">
+      <div class="content-img">
+        <ng-template #photoslider>
+          <div class="splide__track">
+            <ul *ngIf="petDetail" class="splide__list">
+              <li *ngFor="let photo of photos" class="splide__slide">
+                <div *ngIf="photos" class="slider-img-container">
+                  <img [src]="photo" alt="pet's photo" />
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+        <div class="slider">
+          <section id="main-carousel" class="splide">
+            <ng-container *ngTemplateOutlet="photoslider"></ng-container>
+          </section>
+
+          <section id="thumbnail-carousel" class="splide">
+            <ng-container *ngTemplateOutlet="photoslider"></ng-container>
+            <div class="splide__arrows splide__arrows--ltr">
+              <button
+                mat-icon-button
+                class="splide__arrow splide__arrow--prev arrow__move-left"
+                type="button"
+                aria-label="Previous slide"
+                aria-controls="splide01-track"
+              >
+                <mat-icon>keyboard_arrow_left</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                class="splide__arrow splide__arrow--next arrow__move-right"
+                type="button"
+                aria-label="Next slide"
+                aria-controls="splide01-track"
+              >
+                <mat-icon>keyboard_arrow_right</mat-icon>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+      <div class="content__detail">
+        <div class="detail__name">
+          <h2>{{ petDetail?.name }}</h2>
+        </div>
+        <div class="detail">
+          <div class="main">
+            <div class="content-main">
+              <div class="content-main__title">
+                <h4 *ngIf="petDetail?.type">Вид:</h4>
+                <h4 *ngIf="petDetail?.breed">Порода:</h4>
+                <h4 class="content-main__title">Стать:</h4>
+                <h4 *ngIf="petDetail">Вік:</h4>
+                <h4>Розмір:</h4>
+              </div>
+              <div class="content-main__detail">
+                <h4 *ngIf="petDetail?.type">{{ petDetail?.type }}</h4>
+                <h4 *ngIf="petDetail?.breed">{{ petDetail?.breed }}</h4>
+                <h4>{{ petDetail?.sex }}</h4>
+                <h4 *ngIf="petDetail">{{ age }}</h4>
+                <h4>{{ petDetail?.size }}</h4>
+              </div>
+            </div>
+          </div>
+          <div class="content-description">
+            <h3 class="content-description__title">Моя історія</h3>
+            <p class="content-description__info">
+              {{ petDetail?.description }}
+            </p>
+          </div>
+          <div class="content-buttons">
+            <app-button-default (click)="openAdoptDialog()" [title]="'Всиновити'"></app-button-default>
+            <app-button-default (click)="openOverstayDialog()" [title]="'Перетримка'"></app-button-default>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

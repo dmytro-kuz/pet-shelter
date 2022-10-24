@@ -1,0 +1,95 @@
+<mat-card>
+  <mat-card-content>
+    <div class="admin-adopt-details-container">
+      <div class="admin-adopt-details-info">
+        <h4>Заявка на адопцію</h4>
+        <br />
+        <div *ngIf="!changeDetails" class="admin-adopt-details-main">
+          <app-main-details-info [data]="mainDetail"></app-main-details-info>
+        </div>
+        <div class="action-section">
+          <button *ngIf="!changeDetails" mat-stroked-button color="primary" (click)="changeDetails = true">
+            Редагувати
+          </button>
+          <button *ngIf="!changeDetails" mat-stroked-button color="warn" (click)="deleteDialog()">Видалити</button>
+        </div>
+
+        <div *ngIf="changeDetails" class="admin-adopt-details-edit">
+          <form *ngIf="adoptForm" [formGroup]="adoptForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <mat-form-field class="full-width">
+                <mat-label>Статус</mat-label>
+                <mat-select formControlName="adoptStatus" disableOptionCentering>
+                  <mat-option value="в обробці">в обробці</mat-option>
+                  <mat-option value="підтверджено">підтверджено</mat-option>
+                  <mat-option value="прилаштовано">прилаштовано</mat-option>
+                </mat-select>
+                <mat-error *ngIf="validControl('adoptStatus')">
+                  {{ getErrorMessage('adoptStatus') }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="full-width">
+                <mat-label>Клієнт</mat-label>
+                <input formControlName="clientName" matInput placeholder="Ім'я Прізвище" />
+                <mat-error *ngIf="validControl('clientName')">
+                  {{ getErrorMessage('clientName') }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="full-width">
+                <mat-label>Електронна адреса клієнта</mat-label>
+                <input formControlName="clientEmail" matInput placeholder="email@email.com" />
+                <mat-error *ngIf="validControl('clientEmail')">
+                  {{ getErrorMessage('clientEmail') }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="full-width">
+                <mat-label>Телефон клієнта</mat-label>
+                <input
+                  mask="(000)000-0000"
+                  prefix="+38"
+                  [showMaskTyped]="true"
+                  [dropSpecialCharacters]="false"
+                  placeHolderCharacter="_"
+                  formControlName="clientPhone"
+                  matInput
+                />
+                <mat-error *ngIf="validControl('clientPhone')">
+                  {{ getErrorMessage('clientPhone') }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field class="full-width">
+                <mat-label>Інформація про клієнта</mat-label>
+                <textarea
+                  formControlName="clientInformation"
+                  matInput
+                  rows="5"
+                  placeholder="Напишіть декілька слів про себе, та чому ви хочете взяти тварину?"
+                >
+                </textarea>
+                <mat-error *ngIf="validControl('clientInformation')">
+                  {{ getErrorMessage('clientInformation') }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="action-section">
+              <button mat-stroked-button color="primary" [disabled]="onSubmitBtnLock" type="submit">Змінити</button>
+              <button mat-stroked-button color="basic" type="button" (click)="changeDetails = false">Скасувати</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,23 @@
+@import 'src/styles/variables.scss';
+
+:host {
+  min-height: 250px;
+  margin-bottom: 30px;
+
+  &::ng-deep .legend-labels {
+    overflow-x: auto;
+  }
+
+  &::ng-deep .grid-panel {
+    display: none;
+  }
+
+  &::ng-deep .chart-legend .legend-labels {
+    line-height: normal;
+    justify-content: center;
+  }
+
+  &::ng-deep .chart-legend .legend-wrap {
+    width: 100%;
+  }
+}

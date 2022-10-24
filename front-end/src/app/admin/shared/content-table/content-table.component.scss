@@ -1,0 +1,71 @@
+@import 'src/styles/variables.scss';
+
+section {
+  margin: 1rem 0;
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+th {
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: $section-color;
+}
+
+tr.element-row {
+  cursor: pointer;
+  position: relative;
+}
+
+tr.element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.table-container {
+  position: relative;
+  overflow-x: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.not-viewed {
+  background: $main-color;
+}
+
+:host ::ng-deep td.mat-cell {
+  padding: 0 0.4rem;
+}
+
+.viewed {
+  background: none;
+}
+
+td,
+th {
+  white-space: nowrap;
+}
+
+.empty-table-wrapper {
+  color: $shelter-admin-grey;
+  padding: 1rem 0;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+
+  .empty-table-msg {
+    text-align: center;
+  }
+
+  mat-icon {
+    width: auto;
+    font-size: 56px;
+  }
+}

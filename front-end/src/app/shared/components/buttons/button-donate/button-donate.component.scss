@@ -1,0 +1,73 @@
+@import 'src/styles/variables.scss';
+
+.button-donate {
+  width: 400px;
+  height: 80px;
+  padding: 16px;
+  background: $second-color;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  color: $typo-color;
+  font-size: 1.75rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: $roboto-font;
+  font-weight: 500;
+  transition: 0.3s;
+  box-shadow: 1px 1px 8px 2px #333;
+
+  &:hover {
+    background: $section-color;
+    outline: 1px solid $second-color;
+    border-radius: 8px;
+    color: #333;
+
+    span:after {
+      background: url(/assets/img/icons/paw-hover.svg) 0 0 / contain no-repeat;
+    }
+  }
+
+  & span {
+    position: relative;
+  }
+
+  & span::after {
+    content: '';
+    right: -70px;
+    bottom: -10px;
+    width: 45px;
+    height: 56px;
+    background: url(/assets/img/icons/paw.svg) 0 0 / contain no-repeat;
+    position: absolute;
+
+    @media (max-width: 768px) {
+      right: -40px;
+      bottom: -5px;
+      width: 31px;
+      height: 38px;
+    }
+
+    @media (max-width: 375px) {
+      right: -35px;
+      bottom: -2px;
+      width: 28px;
+      height: 33px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    width: 285px;
+    height: 70px;
+    padding: 1rem 3.75rem 1rem 2.875;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    width: 244px;
+    height: 60px;
+  }
+}

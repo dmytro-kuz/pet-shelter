@@ -1,0 +1,90 @@
+@import 'src/styles/variables.scss';
+
+.news-card {
+  display: flex;
+  justify-content: center;
+  @media (max-width: $small-tablet) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media (max-width: $semi-mobile) {
+    padding: 0 1rem;
+  }
+}
+
+.card-content {
+  max-width: 500px;
+  position: relative;
+}
+.button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  .show-btn {
+    background-color: inherit;
+    border: 0;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+.material-icons {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+.card-titles {
+  h3 {
+    margin-bottom: 10px;
+  }
+  h4 {
+    margin-bottom: 10px;
+  }
+}
+.card-photo {
+  max-width: 410px;
+  margin-right: 40px;
+
+  @media (max-width: $large) {
+    max-width: 370px;
+  }
+  @media (max-width: $less-large) {
+    max-width: 330px;
+  }
+  @media (max-width: $tablet) {
+    max-width: 270px;
+  }
+  @media (max-width: $less-tablet) {
+    max-width: 250px;
+  }
+  @media (max-width: $small-tablet) {
+    max-width: 500px;
+    margin-bottom: 2rem;
+    margin-right: 0;
+  }
+  @media (max-width: $semi-mobile) {
+    max-width: 450px;
+  }
+  @media (max-width: $medium) {
+    max-width: 370px;
+  }
+  @media (max-width: $almost-mobile) {
+    max-width: 310px;
+  }
+  @media (max-width: $small-mobile) {
+    max-width: 260px;
+  }
+}
+
+.create-time {
+  font-style: italic;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $second-color;
+}
+
+:host ::ng-deep mattooltip {
+  position: relative;
+  left: -100px;
+}

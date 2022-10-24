@@ -1,0 +1,85 @@
+@import 'src/styles/variables.scss';
+.drugs {
+  margin-top: 1.875rem;
+  h2 {
+    font-size: 25px;
+  }
+
+  form {
+    mat-form-field {
+      margin-right: 1.875rem;
+    }
+    mat-radio-button {
+      margin-right: 1.875rem;
+    }
+    .buttons {
+      margin-bottom: 2.813rem;
+      .button-default {
+        font-family: $roboto-font;
+        line-height: 1.75rem;
+        text-align: center;
+        transition: 0.3s;
+        &:hover {
+          background: $main-color;
+          outline: 1px solid $second-color;
+        }
+        span {
+          font-size: 14px;
+          padding: 0.625rem;
+        }
+      }
+      .button-reset {
+        font-family: $roboto-font;
+        line-height: 1.75rem;
+        text-align: center;
+        transition: 0.3s;
+        margin-left: 0.938rem;
+        &:hover {
+          background: rgb(241, 96, 96);
+          outline: 1px solid $second-color;
+        }
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $container) {
+  .drugs {
+    form {
+      margin-left: 2.5rem;
+    }
+    h2 {
+      margin-left: 2.5rem;
+    }
+  }
+}
+@media screen and (max-width: $large) {
+  .drugs {
+    h2 {
+      font-size: 20px;
+    }
+    .change-count {
+      margin-top: 1.875rem;
+    }
+  }
+}
+@media screen and (max-width: $less-large) {
+  .drugs {
+    mat-radio-group {
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+  }
+}
+
+@media screen and (max-width: $medium) {
+  .drugs {
+    mat-radio-group {
+      mat-radio-button {
+        margin-bottom: 0.625rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<div class="container">
+  <div *ngIf="news" class="news-card">
+    <div class="card-photo">
+      <app-news-photos-slider [data]="news.photos"></app-news-photos-slider>
+    </div>
+    <div class="card-content">
+      <div class="card-titles">
+        <h3>
+          {{ news.title }}
+        </h3>
+        <h4>
+          {{ news.subtitle }}
+        </h4>
+        <p class="create-time">
+          {{ news.createdAt | date: 'dd.MM.yyyy HH:mm' }}
+        </p>
+      </div>
+      <div class="text-container">
+        <p class="news-text">
+          {{ showMore ? news.text : (news.text | slice: 0:750) }} <span *ngIf="!showMore">...</span>
+        </p>
+        <div class="button-wrapper">
+          <button class="show-btn" *ngIf="showMore" (click)="onShow()" matTooltip="Hide" matTooltipPosition="right">
+            <mat-icon class="material-icons"> keyboard_arrow_up </mat-icon>
+          </button>
+          <button
+            class="show-btn"
+            *ngIf="!showMore"
+            (click)="onShow()"
+            matTooltip="Show more"
+            matTooltipPosition="right"
+          >
+            <mat-icon class="material-icons"> keyboard_arrow_down </mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

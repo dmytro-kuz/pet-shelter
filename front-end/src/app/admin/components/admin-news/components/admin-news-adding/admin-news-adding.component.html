@@ -1,0 +1,66 @@
+<h1>Новини</h1>
+<h2>Додати нову</h2>
+<mat-card class="news-content">
+  <div *ngIf="addingFormValue">
+    <form *ngIf="addingForm" [formGroup]="addingForm" id="modalForm" (ngSubmit)="onSubmit(addingForm)">
+      <div *ngFor="let item of addingFormValue.input">
+        <mat-form-field id="edit" class="mod" appearance="outline">
+          <mat-label>
+            <mat-icon matSuffix>drive_file_rename_outline</mat-icon>
+            <span class="control-key">{{ item.controlKey }}</span>
+          </mat-label>
+          <input
+            type="{{ item.type }}"
+            matInput
+            placeholder="{{ item.placeholder }}"
+            formControlName="{{ item.controlName }}"
+          />
+        </mat-form-field>
+      </div>
+      <mat-form-field id="edit-textarea" appearance="outline">
+        <mat-label>{{ addingFormValue.textarea.controlKey }}</mat-label>
+        <textarea
+          matInput
+          rows="16"
+          formControlName="{{ addingFormValue.textarea.controlName }}"
+          placeholder="{{ addingFormValue.textarea.placeholder }}"
+        >
+        </textarea>
+      </mat-form-field>
+      <p class="note">* - обов'язкові для заповнення</p>
+
+      <div class="card-add">
+        <form class="upload-file" enctype="multipart/form-data">
+          <ul *ngIf="photosCount !== 0">
+            <li *ngFor="let photoName of photosSelectArray">
+              <mat-icon (click)="clearFilePhotoList(photoName)">clear</mat-icon> {{ photoName }}
+            </li>
+          </ul>
+
+          <div class="upload-cursor" (click)="upload.click()">
+            <input #upload type="file" (input)="uploadFile($event)" multiple style="display: none" />
+            <mat-icon class="attach-icon" *ngIf="photosCount === 0">attach_file</mat-icon>
+            <p *ngIf="photosCount === 0; else chooseFile">Виберіть фото</p>
+          </div>
+          <ng-template #chooseFile>
+            <p>Обрано файлів: {{ photosCount }}</p>
+          </ng-template>
+        </form>
+      </div>
+    </form>
+    <div mat-dialog-actions class="btn-container">
+      <button
+        *ngIf="addingForm"
+        type="submit"
+        form="modalForm"
+        color="primary"
+        [disabled]="addingForm.invalid"
+        mat-stroked-button
+        form="modalForm"
+      >
+        Додати
+      </button>
+      <button (click)="resetModalForm()" color="warn" mat-stroked-button>Очистити форму</button>
+    </div>
+  </div>
+</mat-card>

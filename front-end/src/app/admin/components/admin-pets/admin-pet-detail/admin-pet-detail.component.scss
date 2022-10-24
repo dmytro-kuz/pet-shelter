@@ -1,0 +1,412 @@
+@import 'src/styles/variables.scss';
+
+.spinner-position {
+  min-height: 250px;
+}
+
+.demo-inline-calendar-card {
+  border: 1px solid black;
+  width: 300px;
+
+  ::ng-deep #mat-calendar-button-0 {
+    @media (max-width: $less-large) {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: $large) {
+    width: 250px;
+  }
+
+  @media (max-width: $less-large) {
+    width: 210px;
+  }
+
+  @media (max-width: $tablet) {
+    margin: 1.5rem auto;
+    width: 400px;
+  }
+
+  @media (max-width: $semi-mobile) {
+    width: 330px;
+  }
+
+  @media (max-width: $medium) {
+    width: 280px;
+  }
+
+  @media (max-width: $almost-mobile) {
+    width: 250px;
+  }
+
+  @media (max-width: $mobile) {
+    width: 200px;
+  }
+
+  h4 {
+    text-align: center;
+  }
+}
+
+.card {
+  padding: 2rem;
+
+  @media (max-width: $almost-mobile) {
+    padding: 0.5rem;
+  }
+
+  .mat-card-content {
+    margin-right: 0.5rem;
+  }
+
+  p {
+    font-family: $roboto-font;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0.5rem;
+
+    @media (max-width: $less-large) {
+      font-size: 12px;
+      padding: 0.3rem;
+    }
+
+    @media (max-width: $tablet) {
+      font-size: 16px;
+      padding-bottom: 0.8rem;
+    }
+
+    @media (max-width: $almost-mobile) {
+      font-size: 12px;
+      padding: 0.3rem;
+    }
+
+    span {
+      color: $shelter-admin-grey;
+    }
+  }
+
+  .calendar-hide {
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+
+  .card-content {
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: $less-tablet) {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .subtitle-image {
+      max-width: 300px;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      @media (max-width: $large) {
+        max-width: 250px;
+      }
+
+      @media (max-width: $less-large) {
+        max-width: 200px;
+        height: 250px;
+      }
+
+      @media (max-width: $tablet) {
+        max-width: 300px;
+        height: 350px;
+      }
+
+      @media (max-width: $almost-mobile) {
+        max-width: 250px;
+        height: 300px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        border: 1px solid #000000;
+        object-fit: cover;
+      }
+    }
+
+    .pet-detail-content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-right: 1rem;
+
+      button {
+        width: 150px;
+        margin-top: 3rem;
+
+        :first-child {
+          margin-right: 0.5rem;
+        }
+
+        @media (max-width: $large) {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+
+      .content-tittle {
+        margin: 0 1rem;
+      }
+
+      .pet-detail-edit {
+        ::ng-deep .edit {
+          font-size: 14px;
+          width: 100%;
+
+          .mat-form-field-wrapper {
+            width: 100%;
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    .content-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        margin-top: 0.5rem;
+      }
+
+      .edit-btn {
+        display: flex;
+        justify-content: center;
+
+        @media (max-width: $large) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+.pet-detail-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  margin: 1rem;
+}
+
+.example-full-width {
+  margin: 0;
+}
+
+.show-more-content {
+  padding: 1rem;
+
+  h3 {
+    color: $shelter-admin-grey;
+    width: 260px;
+  }
+
+  .show-more-calendar {
+    display: none;
+
+    @media (max-width: $tablet) {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+  }
+
+  mat-icon {
+    transform: scale(1.5);
+    color: $shelter-admin-grey;
+  }
+
+  .show-more-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+
+    h3 {
+      color: $shelter-admin-grey;
+    }
+  }
+
+  .show-more-description {
+    margin: 0.8rem 0 1.5rem 0;
+
+    h4 {
+      margin-bottom: 1rem;
+    }
+
+    .petDescription-textarea {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .show-more-photo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    h3 {
+      color: $shelter-admin-grey;
+    }
+  }
+
+  .photo {
+    margin: 0.8rem 0 1.5rem 0;
+
+    .photo-galery {
+      display: grid;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+
+      @media (max-width: $container) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: $tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: $semi-mobile) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .galary-card {
+        width: 220px;
+        height: 220px;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: $large) {
+          width: 180px;
+          height: 180px;
+        }
+
+        @media (max-width: $tablet) {
+          width: 250px;
+          height: 250px;
+        }
+
+        @media (max-width: $less-tablet) {
+          width: 200px;
+          height: 200px;
+        }
+
+        @media (max-width: $semi-mobile) {
+          width: 250px;
+          height: 250px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          overflow: hidden;
+          box-sizing: border-box;
+        }
+
+        .card-buttons {
+          width: 100%;
+          height: 20%;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(255, 255, 255, 0.5);
+          overflow: hidden;
+
+          button {
+            margin: 0;
+            padding: 0;
+          }
+
+          mat-icon {
+            transform: scale(0.95);
+            color: black;
+          }
+        }
+      }
+
+      .galary-card img {
+        border-radius: 8px;
+      }
+
+      .card-add {
+        border-radius: 8px;
+        border: 1px solid rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+
+        ul {
+          overflow-y: scroll;
+          overflow-x: hidden;
+          max-height: 100px;
+          width: 95%;
+          cursor: auto;
+
+          li {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+
+            mat-icon {
+              transform: scale(0.5);
+              color: rgb(0, 0, 0);
+              margin: 0;
+              padding: 0;
+              cursor: pointer;
+            }
+          }
+        }
+
+        .photo-name {
+          font-size: 12px;
+        }
+
+        h3 {
+          margin-bottom: 1.5rem;
+          text-align: center;
+        }
+
+        .upload-file {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          p {
+            margin-top: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

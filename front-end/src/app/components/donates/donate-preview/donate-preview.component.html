@@ -1,0 +1,137 @@
+<div class="donate-preview-wrapper">
+  <div class="container">
+    <div class="donate-preview-title">
+      <h2>Допомога</h2>
+    </div>
+    <div class="donate-preview-content">
+      <div class="donate-image-container">
+        <div class="donate-image">
+          <img src="/assets/img/donate/donate.png" alt="donate" />
+          <h2 class="total-amount">Загальна сума допомоги: {{ donateAmount }} UAH</h2>
+        </div>
+      </div>
+      <div class="donate-side-content">
+        <div *ngIf="showMoreInfo" class="donate-side-title">
+          <h3>Підтримай друга</h3>
+        </div>
+        <div *ngIf="showMoreInfo" class="donate-side-text">
+          <p>
+            Після прибуття тварини у наш притулок, наші віддані команди допомогли бідолашному Барсику знову встати на
+            лапи за допомогою ліків, операції, їжі та любові. На жаль, ми бачимо все більше і більше покинутих і
+            вразливих домашніх тварин, таких як він, які проходять через наші двері. Але Ви можете переконатися, що ми
+            ніколи не залишимо їх. Ви можете приєднатись до нас та допомогти матеріально, щоб ми могли і далі
+            продовжувати нашу роботу. Не залишайтесь байдужими.
+          </p>
+        </div>
+        <div class="donate-filter-body">
+          <section class="example-section">
+            <form *ngIf="paymentForm" [formGroup]="paymentForm" class="form" (ngSubmit)="onSubmit()" autocomplete="off">
+              <div *ngIf="!showMoreInfo" class="donate-payment-data">
+                <h3>Введіть Ваші платіжні дані:</h3>
+                <div class="liqpay-logo">
+                  <img src="/assets/img/donate/liqPay.png" alt="liqPay logo" />
+                </div>
+                <input
+                  mask="0000 0000 0000 0000"
+                  formControlName="paymentCard"
+                  class="donate-payment-card"
+                  matInput
+                  placeholder="Введіть номер картки"
+                  autocomplete="cc-number"
+                />
+
+                <div
+                  class="error-message"
+                  *ngIf="
+                    paymentForm.get('paymentCard')?.invalid &&
+                    (paymentForm.get('paymentCard')?.dirty || paymentForm.get('paymentCard')?.touched)
+                  "
+                >
+                  *Номер картки повинен бути довжиною 16 символів.
+                </div>
+
+                <div class="donate-payment-group">
+                  <div class="donate-payment">
+                    <input
+                      mask="00/00"
+                      formControlName="paymentDateLimit"
+                      class="donate-limit-input first"
+                      autocomplete="cc-exp"
+                      matInput
+                      placeholder="MM/YY"
+                    />
+
+                    <input
+                      formControlName="paymentCvv"
+                      mask="000"
+                      class="donate-cvv last"
+                      matInput
+                      placeholder="сvv"
+                      autocomplete="cc-csc"
+                      [hiddenInput]="true"
+                      [patterns]="customPattern"
+                    />
+                    <div
+                      class="error-message"
+                      *ngIf="
+                        paymentForm.get('paymentCvv')?.invalid &&
+                        (paymentForm.get('paymentCvv')?.dirty || paymentForm.get('paymentCvv')?.touched)
+                      "
+                    >
+                      *Введіть дійсний код сvv
+                    </div>
+                    <div
+                      class="error-message"
+                      *ngIf="
+                        paymentForm.get('paymentDateLimit')?.invalid &&
+                        (paymentForm.get('paymentDateLimit')?.dirty || paymentForm.get('paymentDateLimit')?.touched)
+                      "
+                    >
+                      *Введіть дійсний термін дії картки у форматі MM/YY
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="custom-input">
+                <button (click)="setPaymentAmount(50)" type="button" class="first">50 ₴</button>
+                <button (click)="setPaymentAmount(100)" type="button">100 ₴</button>
+                <button (click)="setPaymentAmount(150)" type="button">150 ₴</button>
+                <button (click)="setPaymentAmount(200)" class="last" type="button">200 ₴</button>
+                <input
+                  formControlName="paymentAmount"
+                  type="text"
+                  class="other-sum"
+                  placeholder="Інша сума"
+                  (change)="setPaymentAmount($event)"
+                  min="1"
+                  mask="separator"
+                  suffix=" ₴"
+                />
+                <div
+                  class="error-message"
+                  *ngIf="
+                    paymentForm.get('paymentAmount')?.invalid &&
+                    (paymentForm.get('paymentAmount')?.dirty || paymentForm.get('paymentAmount')?.touched)
+                  "
+                >
+                  *Введіть суму допомоги.
+                </div>
+                <p *ngIf="!showMoreInfo">* Всі права конфіденційні та захищені.</p>
+                <div *ngIf="!showMoreInfo" class="donate-button">
+                  <app-button-donate type="submit"></app-button-donate>
+                </div>
+                <div *ngIf="showMoreInfo" class="donate-button">
+                  <app-button-donate
+                    routerLink="/donates"
+                    [queryParams]="{ donateAmount: queryAmount }"
+                  ></app-button-donate>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

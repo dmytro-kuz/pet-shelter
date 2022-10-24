@@ -1,0 +1,38 @@
+@import 'src/styles/variables.scss';
+
+form,
+mat-form-field {
+  width: 100%;
+}
+
+mat-card {
+  padding: 2rem;
+}
+
+.admin-adopt-details-info {
+  max-width: 500px;
+}
+
+.action-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+@media (max-width: $tablet) {
+  mat-card {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: $semi-mobile) {
+  .admin-adopt-details-info {
+    min-width: 272px;
+    margin: 0.6rem;
+  }
+  mat-card {
+    min-width: 304px;
+    padding: 0.5rem;
+  }
+}

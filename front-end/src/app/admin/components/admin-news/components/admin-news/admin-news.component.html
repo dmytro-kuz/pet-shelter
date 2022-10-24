@@ -1,0 +1,18 @@
+<h1>Новини</h1>
+
+<app-admin-filter [filterParams]="filterParams" (filterChange)="onFilterChange($event)"></app-admin-filter>
+
+<div class="add-new">
+  <button mat-button color="primary" class="filter-btn" [routerLink]="['adding']">
+    <mat-icon>add_circle</mat-icon> <span>Додати новину</span>
+  </button>
+</div>
+
+<app-content-table
+  [data]="data"
+  *ngIf="{ content: tableData$ | async, pagination: pagination$ | async } as values"
+  [values]="values"
+  (sortChange)="onSortChange($event)"
+  (PaginationChange)="onPaginationChange($event)"
+>
+</app-content-table>

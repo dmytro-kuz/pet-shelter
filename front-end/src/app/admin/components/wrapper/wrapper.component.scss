@@ -1,0 +1,88 @@
+@import '/src/styles/variables.scss';
+
+.admin-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.content {
+  padding-top: 1rem;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+
+  h1 {
+    color: $main-color;
+    margin-left: 0.8rem;
+  }
+
+  mat-sidenav {
+    mat-nav-list {
+      span {
+        margin-left: 0.6rem;
+      }
+
+      .arrow-btn {
+        transition: 300ms ease-in-out;
+        transform: rotate(0deg);
+      }
+
+      .arrow-btn.rotated {
+        transform: rotate(180deg);
+        position: absolute;
+        right: 0.6rem;
+      }
+    }
+  }
+}
+
+.mat-list-item.active {
+  color: $main-color;
+  background-color: $second-color;
+}
+
+.mat-toolbar {
+  background: $second-color;
+}
+
+.toolbar {
+  justify-content: space-between;
+
+  mat-icon {
+    color: $main-color;
+  }
+
+  .title-toolbar {
+    display: flex;
+
+    mat-icon {
+      @media (max-width: $mobile) {
+        display: none;
+      }
+    }
+
+    h1 {
+      @media (max-width: $mobile) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .icon-menu {
+    cursor: pointer;
+  }
+
+  .toolbar-menu {
+    mat-icon {
+      margin: 0 1rem;
+      cursor: pointer;
+
+      @media (max-width: $mobile) {
+        margin: 0.7rem;
+      }
+    }
+  }
+}

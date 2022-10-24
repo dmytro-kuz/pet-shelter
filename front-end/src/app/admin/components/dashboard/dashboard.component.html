@@ -1,0 +1,100 @@
+<h1>Панель управління</h1>
+<section class="dashboard">
+  <div class="dashboard-section spinner-position">
+    <h3 class="dashboard-statistics-title">ЗАГАЛЬНІ ВІДОМОСТІ ПРИТУЛКУ</h3>
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <div class="dashboard-statistics" *ngIf="dashboardInfo$ | async as dashboardInfo">
+      <div class="statistics-item pets">
+        <div>
+          <h4>Тварини</h4>
+          <p>Тварин в притулку:</p>
+          <span>{{ dashboardInfo.pets.all }}</span>
+        </div>
+        <div>
+          <p>Собак:</p>
+          <span>{{ dashboardInfo.pets.dogs }}</span>
+        </div>
+        <div>
+          <p>Котів:</p>
+          <span>{{ dashboardInfo.pets.cats }}</span>
+        </div>
+      </div>
+      <div class="statistics-item overstays">
+        <div>
+          <h4>Перетримки/Прилаштування</h4>
+          <p>Заявок на перетримку:</p>
+          <span>{{ dashboardInfo.overstay }}</span>
+        </div>
+        <div>
+          <p>Заявок на прилаштування:</p>
+          <span>{{ dashboardInfo.adopt }}</span>
+        </div>
+      </div>
+      <div class="statistics-item donates">
+        <div>
+          <h4>Донати</h4>
+          <div>
+            <p>Всього донатів:</p>
+            <span>{{ dashboardInfo.donate.all }}</span
+            ><span> грн.</span>
+          </div>
+          <div>
+            <p>Донатів за сьогодні:</p>
+            <span>{{ dashboardInfo.donate.today }}</span
+            ><span> грн.</span>
+          </div>
+        </div>
+      </div>
+      <div class="statistics-item food">
+        <div>
+          <h4>Корм</h4>
+          <div>
+            <p>Корму для котів:</p>
+            <span>{{ dashboardInfo.food.cats }}</span
+            ><span> уп.</span>
+          </div>
+          <div>
+            <p>Корму для собак:</p>
+            <span>{{ dashboardInfo.food.dogs }}</span
+            ><span> уп.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-social-wrapper">
+    <h3 class="dashboard-social-title">CОЦІАЛЬНІ МЕРЕЖІ</h3>
+    <div class="dashboard-social">
+      <div class="social-item fb">
+        <a target="_blank" href="https://www.facebook.com/"
+          ><img src="assets/img/icons/admin-dashboard-icons/facebook.svg" alt="facebook"
+        /></a>
+      </div>
+      <div class="social-item insta">
+        <a target="_blank" href="https://www.instagram.com/"
+          ><img src="assets/img/icons/admin-dashboard-icons/instagram.svg" alt="instagram"
+        /></a>
+      </div>
+      <div class="social-item twitter">
+        <a target="_blank" href="https://www.twitter.com/"
+          ><img src="assets/img/icons/admin-dashboard-icons/twitter.svg" alt="twitter"
+        /></a>
+      </div>
+      <div class="social-item tiktok">
+        <a target="_blank" href="https://www.tiktok.com/uk-UA/"
+          ><img src="assets/img/icons/admin-dashboard-icons/tiktok.svg" alt="tiktok"
+        /></a>
+      </div>
+      <div class="social-item youtube">
+        <a target="_blank" href="https://www.youtube.com/"
+          ><img src="assets/img/icons/admin-dashboard-icons/youtube.svg" alt="youtube"
+        /></a>
+      </div>
+      <div class="social-item whatsapp">
+        <a target="_blank" href="https://www.whatsapp.com/?lang=uk"
+          ><img src="assets/img/icons/admin-dashboard-icons/whatsapp.svg" alt="whatsapp"
+        /></a>
+      </div>
+    </div>
+  </div>
+</section>

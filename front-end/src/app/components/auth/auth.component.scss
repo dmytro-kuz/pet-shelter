@@ -1,0 +1,53 @@
+@import 'src/styles/variables';
+
+.auth-toolbar {
+  background-color: $second-color;
+  color: $main-color;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  mat-icon {
+    height: 1.9rem;
+    margin: 0 1rem;
+  }
+}
+
+mat-card {
+  padding: 0;
+  height: 100vh;
+}
+
+.login-form {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .login-form-title {
+    margin-bottom: 2rem;
+  }
+}
+
+mat-form-field {
+  width: 500px;
+
+  @media (max-width: $semi-mobile) {
+    max-width: 290px;
+  }
+}
+
+.error-message {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+input.ng-invalid.ng-touched {
+  color: rgb(255, 0, 0);
+}

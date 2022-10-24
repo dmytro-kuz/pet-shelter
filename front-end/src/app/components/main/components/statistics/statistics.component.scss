@@ -1,0 +1,64 @@
+@import '/src/styles/variables.scss';
+
+.statistic-wrapper {
+  min-height: calc(100vh - 75px);
+  background-color: $section-color;
+
+  .container {
+    h2 {
+      text-align: center;
+      padding-top: 3.188rem;
+    }
+
+    .content {
+      padding-top: 2.125rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+
+      .buttons {
+        width: 300px;
+
+        .mat-raised-button {
+          margin: 0.938rem;
+          background-color: $second-color;
+          transition: 0.35s;
+
+          &:hover {
+            background-color: $main-color;
+            color: $second-color;
+          }
+
+          &.active {
+            background-color: $main-color;
+            color: $second-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.statistic-wrapper {
+  .container {
+    .content {
+      min-width: 50%;
+
+      .buttons {
+        display: block;
+        margin-top: 1rem;
+
+        .mat-raised-button {
+          width: 100%;
+          margin: 0 0 1.625rem 0;
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep .chart-legend .legend-labels {
+  display: flex;
+  flex-wrap: wrap;
+}

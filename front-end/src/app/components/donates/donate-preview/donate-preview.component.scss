@@ -1,0 +1,263 @@
+@import 'src/styles/variables';
+
+.donate-preview-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 75px);
+  background-color: $main-color;
+  margin: auto;
+}
+
+.container {
+  padding-top: 2rem;
+}
+
+.donate-preview-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+
+  @media (max-width: $large) {
+    margin-bottom: 1rem;
+  }
+}
+
+.donate-preview-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: $large) {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+}
+
+.donate-image-container {
+  max-width: 700px;
+  margin-right: 6rem;
+  position: relative;
+  margin-bottom: 1rem;
+
+  .donate-image {
+    display: flex;
+    justify-content: center;
+  }
+
+  .total-amount {
+    position: absolute;
+    bottom: 28px;
+    font-size: 32px;
+
+    @media (max-width: $container) {
+      font-size: 28px;
+    }
+
+    @media (max-width: $large) {
+      font-size: 38px;
+    }
+
+    @media (max-width: $less-tablet) {
+      font-size: 25px;
+      bottom: 25px;
+    }
+
+    @media (max-width: $semi-mobile) {
+      bottom: 15px;
+    }
+
+    @media (max-width: $medium) {
+      font-size: 22px;
+      bottom: 5px;
+    }
+
+    @media (max-width: $almost-mobile) {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: $large) {
+    margin-right: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+.mat-input-element {
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+.error-message {
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+}
+
+input.ng-invalid.ng-touched {
+  border: 3px solid rgb(255, 0, 0);
+}
+
+.donate-side-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: $large) {
+    flex-wrap: wrap;
+    max-width: 90%;
+    justify-content: center;
+  }
+}
+
+.donate-side-text {
+  margin-bottom: 2rem;
+  max-width: 500px;
+  text-align: justify;
+
+  @media (max-width: $large) {
+    max-width: 90%;
+  }
+}
+
+.donate-payment-data {
+  max-width: 480px;
+
+  .liqpay-logo {
+    width: 100px;
+
+    img {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  @media (max-width: $large) {
+    max-width: 100%;
+  }
+
+  .donate-payment-card {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+
+  .donate-payment-group {
+    // display: flex;
+
+    .donate-payment {
+      .donate-limit-input {
+        width: 50%;
+        margin-bottom: 0.5rem;
+        border-radius: 8px 0 0 8px;
+      }
+
+      .donate-cvv {
+        margin-bottom: 0.5rem;
+        width: 50%;
+        border-radius: 0px 8px 8px 0;
+      }
+    }
+  }
+}
+
+.donate-filter-body {
+  margin-bottom: 1rem;
+}
+
+.example-margin {
+  visibility: hidden;
+}
+
+.donate-button {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $tablet) {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.custom-input {
+  p {
+    margin-top: 0.4rem;
+  }
+
+  @media (max-width: $medium) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.first {
+  border-radius: 8px 0 0 8px;
+
+  @media (max-width: $semi-mobile) {
+    border-radius: 8px;
+  }
+}
+
+.other-sum {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.last {
+  border-radius: 0px 8px 8px 0;
+
+  @media (max-width: $semi-mobile) {
+    border-radius: 8px;
+  }
+}
+
+button,
+input {
+  cursor: pointer;
+  width: 25%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125rem;
+  text-align: center;
+  border: 1px solid $typo-color;
+  background-color: $shelter-grey;
+  margin-bottom: 0.5rem;
+  color: rgb(0, 0, 0);
+
+  @media (max-width: $semi-mobile) {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid rgb(0, 0, 0);
+    transition: 0.15s ease;
+  }
+
+  &:focus {
+    color: $typo-color;
+    background-color: $second-color;
+  }
+
+  &::placeholder {
+    color: rgb(0, 0, 0, 0.4);
+  }
+
+  &:hover::placeholder {
+    color: $second-color;
+  }
+
+  &:focus::placeholder {
+    color: rgb(205, 205, 205, 0.5);
+  }
+}

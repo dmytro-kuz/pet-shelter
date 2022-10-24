@@ -1,0 +1,87 @@
+@import '/src/styles/variables.scss';
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba($second-color, 0.05);
+  border-radius: 0.3rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  width: 120px;
+}
+
+.paw-wrapper {
+  height: fit-content;
+  width: fit-content;
+
+  color: #ffc800;
+
+  mat-icon {
+    height: fit-content;
+    width: fit-content;
+    margin: auto;
+    color: $main-color;
+    font-size: 62px !important;
+  }
+}
+
+$offset: 622;
+$duration: 1.4s;
+
+.spinner {
+  animation: rotator $duration linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+g rect {
+  animation: blink 0.8s infinite;
+}
+
+.path {
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  stroke: $main-color;
+  animation: dash $duration ease-in-out infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: $offset;
+  }
+
+  50% {
+    stroke-dashoffset: calc($offset / 4);
+    transform: rotate(135deg);
+  }
+
+  100% {
+    stroke-dashoffset: $offset;
+    transform: rotate(450deg);
+  }
+}

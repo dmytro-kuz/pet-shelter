@@ -1,0 +1,68 @@
+@import '/src/styles/variables.scss';
+
+.pets-preview {
+  min-height: calc(100vh - 75px);
+  position: relative;
+
+  .pets-title-text {
+    text-align: center;
+    padding-bottom: 1rem;
+
+    @media (max-width: 500px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .pets-list-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 693px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 425px) {
+      grid-template-columns: 1fr;
+    }
+
+    .pet {
+      padding: 0.8rem;
+    }
+  }
+
+  .mat-icon {
+    margin-left: 0.4rem;
+  }
+}
+
+.pets-preview-button-wrapper {
+  width: fit-content;
+  margin-left: auto;
+
+  @media (max-width: $tablet) {
+    margin: auto;
+  }
+
+  .pets-preview-button {
+    width: 180px;
+    background: $second-color;
+    font-size: 1rem;
+    border-radius: 8px;
+    color: $typo-color;
+    margin-top: 2rem;
+
+    &:hover {
+      background: $main-color;
+      outline: 1px solid $second-color;
+      color: $second-color;
+    }
+  }
+}

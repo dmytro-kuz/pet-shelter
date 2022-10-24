@@ -1,0 +1,76 @@
+<ng-template #socialItems>
+  <li class="social-items">
+    <a href="#">
+      <img src="../../../assets/img/icons/facebook.svg" alt="facebook" class="social-ico networks-ico" />
+      Facebook
+    </a>
+  </li>
+  <li class="social-items">
+    <a href="#">
+      <img src="../../../assets/img/icons/instagram.svg" alt="facebook" class="social-ico networks-ico" />
+      Instagram
+    </a>
+  </li>
+  <li class="social-items">
+    <a href="#">
+      <img src="../../../assets/img/icons/telegram.svg" alt="facebook" class="social-ico networks-ico" />
+      Telegram
+    </a>
+  </li>
+</ng-template>
+
+<ng-template #notMainPage>
+  <div class="links-block">
+    <div class="contacts-block">
+      <h4>Наші контакти</h4>
+      <ul class="contacts-list">
+        <li class="contacts-item">
+          <img src="../../../assets/img/icons/location.svg" class="ico contacts-ico" alt="location" />
+          <span>Україна: 58000, Чернівці, вул. Б.Хмельницького, 8/99</span>
+        </li>
+        <li class="contacts-item">
+          <img src="../../../assets/img/icons/phone.svg" class="ico contacts-ico" alt="phone number" />
+          <a href="tel:+38 043 332 39 10">+38 043 332 39 10</a>
+        </li>
+        <li class="contacts-item">
+          <img src="../../../assets/img/icons/phone.svg" class="ico contacts-ico" alt="phone number" />
+          <a href="tel:+38 050 332 39 20">+38 050 332 39 20</a>
+        </li>
+        <li class="contacts-item">
+          <img src="../../../assets/img/icons/mail.svg" class="ico contacts-ico" alt="email adress" />
+          <a href="mailto:shelter_cv@gmail.com">shelter_cv@gmail.com</a>
+        </li>
+      </ul>
+    </div>
+    <div class="social-block">
+      <h4>Соціальні мережі</h4>
+      <ul class="social-list">
+        <ng-container *ngTemplateOutlet="socialItems"></ng-container>
+      </ul>
+    </div>
+  </div>
+</ng-template>
+
+<footer id="contacts" class="footer" *ngIf="isMainPage() || isContactsPage()">
+  <div class="container">
+    <div class="logo">
+      <a href="#">
+        <img src="../../../assets/img/logo/pets_logo.png" alt="logo" />
+      </a>
+    </div>
+    <ul class="social-networks">
+      <div *ngIf="!isTablet === true; then socialItems; else notMainPage"></div>
+    </ul>
+  </div>
+</footer>
+
+<footer class="footer" *ngIf="!isMainPage() && !isContactsPage()">
+  <div class="container">
+    <div class="logo">
+      <a href="#">
+        <img src="../../../assets/img/logo/pets_logo.png" alt="logo" />
+      </a>
+    </div>
+    <ng-container *ngTemplateOutlet="notMainPage"></ng-container>
+  </div>
+</footer>

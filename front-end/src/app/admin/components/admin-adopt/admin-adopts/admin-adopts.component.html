@@ -1,0 +1,12 @@
+<div class="admin-adopts-container">
+  <h2 class="admin-adopts-header">Всиновлення</h2>
+  <app-admin-filter [filterParams]="filterParams" (filterChange)="onFilterChange($event)"></app-admin-filter>
+  <app-content-table
+    *ngIf="{ content: tableData$ | async, pagination: pagination$ | async } as values"
+    [values]="values"
+    [data]="data"
+    (sortChange)="onSortChange($event)"
+    (PaginationChange)="onPaginationChange($event)"
+  >
+  </app-content-table>
+</div>

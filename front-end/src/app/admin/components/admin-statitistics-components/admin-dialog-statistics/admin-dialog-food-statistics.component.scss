@@ -1,0 +1,54 @@
+@import 'src/styles/variables.scss';
+
+.form-request {
+  margin-top: 3.125rem;
+  margin-left: 2.5rem;
+
+  form {
+    h2 {
+      text-transform: uppercase;
+      font-size: 25px;
+      max-width: 500px;
+    }
+    .field {
+      margin-top: 1.25rem;
+    }
+    .delete-button {
+      display: block;
+      font-family: $roboto-font;
+      width: 20%;
+      padding: 0.313rem;
+      line-height: 1.75rem;
+      text-align: center;
+      transition: 0.3s;
+
+      &:hover {
+        background: rgb(241, 96, 96);
+        outline: 1px solid $second-color;
+      }
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+@media screen and (max-width: $tablet) {
+  .form-request {
+    form {
+      .delete-button {
+        width: auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: $mobile) {
+  .form-request {
+    margin-top: 1.688rem;
+    margin-left: 0.625rem;
+    form {
+      h2 {
+        font-size: 14px;
+      }
+    }
+  }
+}

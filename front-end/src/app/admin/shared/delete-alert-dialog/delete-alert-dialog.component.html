@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Видалення</h2>
+<div mat-dialog-content>
+  <p>Ця операція є невідворотною, Ви впевнені?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onClick(true)">Так</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="onClick(false)">Ні</button>
+</div>

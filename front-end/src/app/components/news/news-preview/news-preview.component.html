@@ -1,0 +1,15 @@
+<div class="container">
+  <section class="spinner-position">
+    <h2>Новини</h2>
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <div class="splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide" *ngFor="let item of newsList$ | async">
+            <app-news-preview-card class="splide__slide" [news]="item"></app-news-preview-card>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

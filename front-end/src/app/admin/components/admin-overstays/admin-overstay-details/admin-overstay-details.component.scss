@@ -1,0 +1,63 @@
+@import 'src/styles/variables.scss';
+
+form,
+mat-form-field {
+  width: 100%;
+}
+
+mat-card {
+  padding: 2rem;
+}
+
+.admin-overstay-details-info {
+  width: 500px;
+}
+
+.admin-overstay-details-date-range p {
+  min-width: 280px;
+  margin: 0.8rem;
+}
+
+.admin-overstay-details-date-range p {
+  margin: 0.8rem;
+}
+
+.admin-overstay-details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.action-section {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.overstay-dates-change {
+  margin-bottom: 1rem;
+}
+
+.detail-value {
+  font-weight: 500;
+}
+
+@media (max-width: $tablet) {
+  mat-card {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: $semi-mobile) {
+  .admin-overstay-details-info,
+  .admin-overstay-details-date-range {
+    min-width: 272px;
+    margin: 0.6rem;
+  }
+
+  mat-card {
+    min-width: 304px;
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="form-request">
+  <form *ngIf="modalFoodForm" [formGroup]="modalFoodForm" (ngSubmit)="onSubmit(modalFoodForm)">
+    <h2>{{ title }}</h2>
+    <div class="field" *ngIf="foods">
+      <mat-form-field appearance="outline">
+        <mat-label>Оберіть корм по назві виробника</mat-label>
+        <mat-select formControlName="food">
+          <mat-option *ngFor="let food of foods" [value]="food">
+            {{ food.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button type="button" class="delete-button" (click)="onSubmit(modalFoodForm)">
+      Видалити корм
+    </button>
+  </form>
+</div>

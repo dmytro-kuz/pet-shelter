@@ -1,0 +1,91 @@
+<div class="pet-modal" *ngIf="modalFormValue">
+  <div class="modal-title-wrapper">
+    <h1 mat-dialog-title>Додати тварину</h1>
+    <div class="close-btn" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </div>
+  </div>
+  <div mat-dialog-content>
+    <div class="form-wrapper">
+      <form *ngIf="modalForm" [formGroup]="modalForm" id="modalForm" (ngSubmit)="onSubmit(modalForm)">
+        <div class="modal-wrapper">
+          <div class="modal-search search" *ngFor="let item of modalFormValue.input">
+            <mat-form-field class="mod" appearance="outline">
+              <mat-label>
+                <mat-icon matSuffix>drive_file_rename_outline</mat-icon>
+                <span class="control-key">{{ item.controlKey }}</span>
+              </mat-label>
+              <input
+                type="{{ item.type }}"
+                matInput
+                placeholder="{{ item.placeholder }}"
+                formControlName="{{ item.controlName }}"
+              />
+              <mat-error *ngIf="validControl(item.controlName)">
+                {{ getErrorMessage(item.controlName) }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="modal-input" *ngFor="let item of modalFormValue.select">
+            <mat-form-field *ngIf="item.controlName !== 'status'" class="mod" appearance="outline">
+              <mat-label>{{ item.controlKey }}</mat-label>
+              <mat-select formControlName="{{ item.controlName }}">
+                <mat-option *ngFor="let val of item.controlValue" [value]="val">{{ val }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="modal-datepicker">
+            <mat-form-field class="mod" appearance="outline">
+              <mat-label>
+                {{ modalFormValue.datepicker.controlKey }}
+              </mat-label>
+              <input
+                matInput
+                [min]="minDate"
+                [max]="maxDate"
+                [matDatepicker]="picker"
+                formControlName="{{ modalFormValue.datepicker.controlName }}"
+              />
+              <mat-hint>ДД/ММ/РРРР</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="modal-textarea">
+            <mat-form-field class="mod" appearance="outline">
+              <mat-label>
+                <mat-icon matSuffix>drive_file_rename_outline</mat-icon>
+                <span class="control-key">{{ modalFormValue.textarea.controlKey }}</span>
+              </mat-label>
+              <textarea
+                matInput
+                rows="8"
+                cols="50"
+                placeholder="{{ modalFormValue.textarea.placeholder }}"
+                formControlName="{{ modalFormValue.textarea.controlName }}"
+              >
+              </textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <p class="note">* - обов'язкові для заповнення</p>
+  <div mat-dialog-actions>
+    <button
+      *ngIf="modalForm"
+      type="submit"
+      form="modalForm"
+      color="primary"
+      [disabled]="modalForm.invalid || onSubmitBtnLock"
+      mat-stroked-button
+      form="modalForm"
+    >
+      Додати
+    </button>
+    <button (click)="resetModalForm()" color="warn" [disabled]="onSubmitBtnLock" mat-stroked-button>
+      Очистити форму
+    </button>
+  </div>
+</div>

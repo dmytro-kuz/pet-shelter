@@ -1,0 +1,37 @@
+<div *ngIf="details" class="main-details-content">
+  <div *ngFor="let info of details">
+    <div class="main-details-section">
+      <div class="main-details-params">
+        <div *ngIf="info.type == 'field'">
+          <p>{{ info.label }}</p>
+          <p class="detail-value-small">{{ info.value || 'Невідомо' }}</p>
+          <hr class="detail-value-small" />
+        </div>
+        <div *ngIf="info.type == 'link'">
+          <p>{{ info.label }}</p>
+          <p class="detail-value-small">
+            <a [routerLink]="route" [queryParams]="{ id: info.value }" title="{{ info.title }}">{{
+              info.value || 'Невідомо'
+            }}</a>
+          </p>
+          <hr class="detail-value-small" />
+        </div>
+      </div>
+      <div class="main-details-value">
+        <p *ngIf="info.type == 'field'" class="detail-value">{{ info.value || 'Невідомо' }}</p>
+        <p *ngIf="info.type == 'link'" class="detail-value">
+          <a [routerLink]="route" [queryParams]="{ id: info.value }" title="{{ info.title }}">{{
+            info.value || 'Невідомо'
+          }}</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="main-details-addition" *ngIf="info.type == 'addition'">
+      <p>{{ info.label }}</p>
+      <div class="text-info-box">
+        <p class="box-detail-value">{{ info.value }}</p>
+      </div>
+    </div>
+  </div>
+</div>

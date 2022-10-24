@@ -1,0 +1,12 @@
+<div *ngIf="chartData$ | async as chartData">
+  <ngx-charts-pie-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="chartData"
+    [doughnut]="isDoughnut"
+    [legendTitle]="''"
+    [legend]="true"
+    [legendPosition]="legendPosition"
+  >
+  </ngx-charts-pie-chart>
+</div>

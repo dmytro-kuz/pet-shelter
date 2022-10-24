@@ -1,0 +1,66 @@
+<div class="foods">
+  <h2 class="corm">Корм</h2>
+
+  <form *ngIf="foodForm" class="example-form" [formGroup]="foodForm" #formDirective="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Оберіть вид тварини</mat-label>
+      <mat-select formControlName="type" disableOptionCentering>
+        <mat-option *ngFor="let type of types" [value]="type"> {{ type }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="foodForm.invalid">Оберіть кота або собаку </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Виробник</mat-label>
+      <input formControlName="name" matInput type="text" />
+      <mat-error *ngIf="foodForm.invalid">Вкажіть виробника</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Ціна в гривнях</mat-label>
+      <input type="number" matInput formControlName="number" />
+      <mat-error *ngIf="foodForm.invalid">Ціна обов'язкова</mat-error>
+    </mat-form-field>
+    <div class="buttons">
+      <button
+        mat-raised-button
+        class="button-default"
+        type="button"
+        (click)="onSubmitFood(foodForm, '/statistics/add-food')"
+      >
+        <span>Додати</span>
+      </button>
+      <button (click)="resetForm()" type="reset" mat-raised-button class="button-reset"><span>Очистити</span></button>
+    </div>
+  </form>
+
+  <div class="change-count">
+    <h2>Змінити кількість корму на одну тварину (в пачках)</h2>
+    <div class="form">
+      <form
+        *ngIf="countFoodForm"
+        class="example-form"
+        [formGroup]="countFoodForm"
+        (ngSubmit)="onSubmitCount(countFoodForm)"
+      >
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input type="number" matInput formControlName="count" />
+        </mat-form-field>
+        <div class="buttons">
+          <button mat-raised-button class="button-default change"><span>Змінити</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="quantity">
+    <span>За останній місяць на корм загалом витрачено: {{ foodAmount }} грн</span>
+  </div>
+  <app-admin-filter [filterParams]="filterParams" (filterChange)="onFilterChange($event)"></app-admin-filter>
+  <app-content-table
+    *ngIf="{ content: tableData$ | async, pagination: pagination$ | async } as values"
+    [values]="values"
+    [data]="dataFood"
+    (PaginationChange)="onPaginationChange($event)"
+    (sortChange)="onSortChange($event)"
+  ></app-content-table>
+</div>

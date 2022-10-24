@@ -1,0 +1,41 @@
+<div class="statistic-wrapper">
+  <div id="statistic" class="container">
+    <h2>Результати нашої роботи</h2>
+    <div class="content spinner-position">
+      <app-spinner *ngIf="loading$ | async"></app-spinner>
+      <div [ngSwitch]="chartName" class="chart">
+        <app-pie *ngSwitchCase="'pie'"></app-pie>
+        <app-diagram *ngSwitchCase="'diagram'"></app-diagram>
+        <app-progress *ngSwitchCase="'progress'"></app-progress>
+      </div>
+
+      <div class="buttons">
+        <p>
+          <button mat-raised-button color="primary" (click)="changeChart('pie')" [class.active]="chartName == 'pie'">
+            Статистика наших улюбленців
+          </button>
+        </p>
+        <p>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="changeChart('diagram')"
+            [class.active]="chartName == 'diagram'"
+          >
+            Донати за рік
+          </button>
+        </p>
+        <p>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="changeChart('progress')"
+            [class.active]="chartName == 'progress'"
+          >
+            Ліки та корм для тваринок
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

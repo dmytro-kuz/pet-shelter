@@ -1,0 +1,31 @@
+<section *ngIf="progressData$ | async as progressData">
+  <div class="each-count">
+    <div class="corm">
+      <span>{{ countFood }} пачок корму потрібно в місяць на одну тваринку</span>
+    </div>
+    <div class="drug">
+      <span>{{ countDrug }} пачок ліків потрібно в місяць на одну тваринку</span>
+    </div>
+  </div>
+  <div>
+    <div class="progress-bar" *ngFor="let item of progressData">
+      <div class="item" [matTooltip]="item.tooltip">
+        <!-- Special Color of all block -->
+        <div class="item-bar" [ngStyle]="{ 'outline-color': item.color }">
+          <!-- Special backgound-color of all block and special widght -->
+          <div class="progress" [ngStyle]="{ 'background-color': item.color, width: item.width + '%' }">
+            <span> {{ item.width }}% </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item" *ngFor="let item of progressData">
+        <!-- Special block with color of each item of array -->
+        <span class="color" [ngStyle]="{ 'background-color': item.color }"></span>
+        <span class="info">{{ item.name }}</span>
+      </div>
+    </div>
+  </div>
+</section>

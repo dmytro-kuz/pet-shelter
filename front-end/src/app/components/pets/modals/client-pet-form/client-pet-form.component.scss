@@ -1,0 +1,76 @@
+@import 'src/styles/variables.scss';
+
+.client-pet-container {
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.mat-dialog-content {
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  max-height: 556px;
+  overflow: visible;
+}
+
+.card-title {
+  text-align: center;
+}
+
+form {
+  margin: auto;
+}
+
+.row {
+  padding: 0rem 1rem;
+  min-width: 280px;
+}
+
+mat-form-field.mat-form-field {
+  font-size: 1rem;
+}
+
+.mat-card-header {
+  background-color: $main-color;
+  border-radius: 4px;
+  padding-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+
+mat-card {
+  padding: 0rem;
+}
+
+button {
+  margin: 1rem;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.hint-text {
+  padding-left: 1rem;
+  font-size: 0.8rem;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: $almost-mobile) {
+  .row {
+    padding: 0 0.5rem;
+    min-width: auto;
+  }
+}
+
+@media (max-width: $mobile) {
+  .form-buttons button {
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+  }
+}

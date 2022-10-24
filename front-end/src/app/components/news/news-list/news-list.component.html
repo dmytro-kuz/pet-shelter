@@ -1,0 +1,7 @@
+<h2>Новини</h2>
+<div class="list-wrapper spinner-position">
+  <app-spinner *ngIf="loading$ | async"></app-spinner>
+  <div class="news-item" *ngFor="let item of newsList$ | async">
+    <app-news-card [news]="item"></app-news-card>
+  </div>
+</div>

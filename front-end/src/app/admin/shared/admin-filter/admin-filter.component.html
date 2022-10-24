@@ -1,0 +1,50 @@
+<div class="filter-wrapper" *ngIf="filterValue">
+  <button mat-button class="filter-btn" color="primary" [ngClass]="{ opened: form }" (click)="form = !form">
+    <mat-icon>filter_alt</mat-icon> <span class="filter-btn-title">Фільтр</span>
+  </button>
+</div>
+<div class="form-wrapper" *ngIf="form">
+  <form *ngIf="filterForm" [formGroup]="filterForm" (ngSubmit)="onSubmit(filterForm)">
+    <div class="pets-filter-wrapper">
+      <div class="pets-filter-input" *ngFor="let item of filterValue.select">
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label>{{ item.controlKey }}</mat-label>
+          <mat-select formControlName="{{ item.controlName }}" disableOptionCentering>
+            <mat-option *ngFor="let val of item.controlValue" [value]="val">{{
+              (val ?? 'Очистити') || val
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="pets-filter-search search" *ngFor="let item of filterValue.search">
+        <mat-form-field class="mat" appearance="outline">
+          <mat-label>
+            <mat-icon matSuffix>search</mat-icon><span>{{ item.controlKey }}</span>
+          </mat-label>
+          <input
+            formControlName="{{ item.controlName }}"
+            type="{{ item.type }}"
+            matInput
+            placeholder="{{ item.placeholder }}"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div class="pets-filter-datapicker datapicker" *ngFor="let item of filterValue.datapicker">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ item.label }}</mat-label>
+          <mat-date-range-input [rangePicker]="picker" [max]="today">
+            <input matStartDate formControlName="{{ item.controlNameFrom }}" placeholder="{{ item.placeholderFrom }}" />
+            <input matEndDate formControlName="{{ item.controlNameTo }}" placeholder="{{ item.placeholderTo }}" />
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+      <div class="filter-buttons-wrapper">
+        <button type="submit" color="primary" mat-stroked-button>Шукати</button>
+        <button (click)="resetFilterForm()" color="warn" mat-stroked-button>Очистити</button>
+      </div>
+    </div>
+  </form>
+</div>

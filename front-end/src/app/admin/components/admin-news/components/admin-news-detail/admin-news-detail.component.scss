@@ -1,0 +1,253 @@
+@import 'src/styles/variables.scss';
+
+::ng-deep #edit {
+  width: 400px;
+
+  @media (max-width: $semi-mobile) {
+    max-width: 340px;
+  }
+  @media (max-width: $medium) {
+    max-width: 300px;
+  }
+  @media (max-width: $almost-mobile) {
+    max-width: 250px;
+  }
+  @media (max-width: $mobile) {
+    max-width: 200px;
+  }
+  @media (max-width: $small-mobile) {
+    max-width: 150px;
+  }
+}
+::ng-deep #edit-textarea {
+  width: 700px;
+
+  @media (max-width: $less-large) {
+    max-width: 650px;
+  }
+  @media (max-width: $semi-tablet) {
+    max-width: 600px;
+  }
+  @media (max-width: $tablet) {
+    max-width: 540px;
+  }
+  @media (max-width: $less-tablet) {
+    max-width: 490px;
+  }
+  @media (max-width: $small-tablet) {
+    max-width: 400px;
+  }
+  @media (max-width: $semi-mobile) {
+    max-width: 340px;
+  }
+  @media (max-width: $medium) {
+    max-width: 300px;
+  }
+  @media (max-width: $almost-mobile) {
+    max-width: 250px;
+  }
+  @media (max-width: $mobile) {
+    max-width: 200px;
+  }
+  @media (max-width: $small-mobile) {
+    max-width: 150px;
+  }
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  h2 {
+    margin-bottom: 15px;
+    font-size: 23px;
+    align-self: flex-end;
+  }
+}
+
+.news-content {
+  margin: 0px 0 50px 0;
+  padding: 30px 0px 30px 30px;
+  background-color: $section-color;
+
+  @media (max-width: $large) {
+    padding: 30px 30px 30px 30px;
+  }
+
+  &__info {
+    .content__titles {
+      font-size: 14px;
+      font-weight: 600;
+      color: $shelter-admin-grey;
+      margin: 30px 0 5px 0;
+      &:first-child {
+        margin: 0px 0 5px 0;
+      }
+    }
+    .text-body {
+      margin: 0px 0 20px 0;
+      max-width: 800px;
+    }
+  }
+}
+
+.btn-container {
+  margin: 0px 0 20px 0;
+  :first-child {
+    margin-right: 20px;
+
+    @media (max-width: $almost-mobile) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.empty-photo-message {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.show-more-photo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  h3 {
+    color: $shelter-admin-grey;
+  }
+}
+
+.photo {
+  margin: 0.8rem 0 1.5rem 0;
+
+  .photo-galery {
+    display: grid;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    @media (max-width: $container) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: $tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: $semi-mobile) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .galary-card {
+      width: 220px;
+      height: 220px;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: $large) {
+        width: 180px;
+        height: 180px;
+      }
+
+      @media (max-width: $tablet) {
+        width: 250px;
+        height: 250px;
+      }
+
+      @media (max-width: $less-tablet) {
+        width: 200px;
+        height: 200px;
+      }
+
+      @media (max-width: $semi-mobile) {
+        width: 250px;
+        height: 250px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .card-buttons {
+        width: 100%;
+        height: 20%;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.5);
+        overflow: hidden;
+
+        button {
+          margin: 0;
+          padding: 0;
+        }
+
+        mat-icon {
+          transform: scale(0.95);
+          color: black;
+        }
+      }
+    }
+
+    .galary-card img {
+      border-radius: 8px;
+    }
+
+    .card-add {
+      border-radius: 8px;
+      border: 1px solid rgb(0, 0, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+
+      h3 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .upload-file {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p {
+          margin-top: 1rem;
+        }
+
+        ul {
+          overflow-y: scroll;
+          overflow-x: hidden;
+          max-height: 100px;
+          width: 100%;
+          cursor: auto;
+
+          li {
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+
+            mat-icon {
+              transform: scale(0.5);
+              color: rgb(0, 0, 0);
+              margin: 0;
+              padding: 0;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+<section class="spinner-position">
+  <app-spinner *ngIf="loading$ | async"></app-spinner>
+  <div class="table-container" *ngIf="values.content as dataSource">
+    <table
+      matSort
+      mat-table
+      (matSortChange)="onSortChange($event)"
+      [dataSource]="dataSource.list"
+      [matSortActive]="activeSort ?? 'null'"
+      [matSortDirection]="sortDirection"
+      multiTemplateDataRows
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="{{ column.value }}" *ngFor="let column of columnsToDisplay">
+        <span *ngIf="column.sort; else unsort">
+          <th mat-sort-header="{{ column.value }}" mat-header-cell *matHeaderCellDef>
+            {{ column.name }}
+          </th>
+        </span>
+        <ng-template #unsort>
+          <th mat-header-cell *matHeaderCellDef>
+            {{ column.name }}
+          </th>
+        </ng-template>
+        <td mat-cell *matCellDef="let element">
+          {{
+            column.name === 'Дата'
+              ? (element[column.value] | date: column.format) || '...'
+              : element[column.value] || '...'
+          }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="rowToDisplay"></tr>
+      <tr
+        (click)="onViewChange(row._id, row.viewed)"
+        mat-row
+        *matRowDef="let row; columns: rowToDisplay"
+        [ngClass]="{ 'not-viewed': row.viewed === false && (row.status === 'success' || row.status === 'Успішно') }"
+        id="{{ row._id }}"
+        class="element-row"
+        [routerLink]="router"
+        [queryParams]="{ id: row._id }"
+      >
+        <span *ngIf="row.viewed === false"></span>
+      </tr>
+    </table>
+    <div class="paginator-wrapper" *ngIf="values.pagination as pagination">
+      <div class="empty-table-wrapper" *ngIf="!dataSource.list.length">
+        <mat-icon class="empty-table-icon">pets</mat-icon>
+        <h4 class="empty-table-msg">нічого не знайдено...</h4>
+      </div>
+      <mat-paginator
+        *ngIf="dataSource.list.length"
+        #paginator
+        [length]="dataSource.amount"
+        [pageSizeOptions]="[10, 20, 30]"
+        [pageSize]="pagination.limit"
+        [pageIndex]="pagination.page"
+        (page)="onPageChange($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</section>

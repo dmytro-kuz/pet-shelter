@@ -1,0 +1,13 @@
+<h2>Донати</h2>
+<app-admin-filter [filterParams]="filterParams" (filterChange)="onFilterChange($event)"></app-admin-filter>
+<div class="notification-msg"><mat-icon>stop</mat-icon><span> - із статусом не переглянуто</span></div>
+<app-content-table
+  *ngIf="{ content: tableData$ | async, pagination: pagination$ | async } as values"
+  [values]="values"
+  [data]="data"
+  [viewedId]="viewedId"
+  (sortChange)="onSortChange($event)"
+  (PaginationChange)="onPaginationChange($event)"
+  (viewChange)="onViewChange($event)"
+>
+</app-content-table>

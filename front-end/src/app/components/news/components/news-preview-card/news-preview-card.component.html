@@ -1,0 +1,30 @@
+<div *ngIf="news" class="news-card">
+  <div class="card-photo">
+    <img mat-card-image [src]="news.photos[0]" alt="news photo" />
+  </div>
+  <div class="card-content">
+    <div class="card-titles">
+      <h3>
+        {{ news.title }}
+      </h3>
+      <h4>
+        {{ news.subtitle }}
+      </h4>
+    </div>
+    <div class="text-container">
+      <p>{{ news.text | slice: 0:250 }}<span>...</span></p>
+      <div class="news-preview-button-wrapper">
+        <button
+          routerLink="news"
+          [queryParams]="{ name: news.title }"
+          mat-button
+          mat-raised-button
+          color="primary"
+          class="news-preview-button"
+        >
+          Деталі
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

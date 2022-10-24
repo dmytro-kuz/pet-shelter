@@ -1,0 +1,6 @@
+<div class="pet-card" *ngIf="pet">
+  <img [src]="photo" alt="photo {{ pet.name }}" />
+  <a routerLink="/pets/details" [queryParams]="{ name: pet.name, id: pet._id }"
+    ><span title="{{ pet.name | titlecase }}" class="pet-name">{{ pet.name | titlecase }}</span></a
+  >
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <section class="spinner-position">
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <div class="pets-preview">
+      <h2 class="pets-title-text">Обери свого улюбленця</h2>
+      <div class="pets-list-wrapper" *ngIf="pets$ | async as pets">
+        <div class="pet" *ngFor="let pet of pets.list">
+          <app-pet-card [pet]="pet"></app-pet-card>
+        </div>
+      </div>
+      <div class="pets-preview-button-wrapper">
+        <button routerLink="/pets" mat-button mat-raised-button class="pets-preview-button">
+          <span>Більше друзів</span>
+          <mat-icon class="mat-icon">arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

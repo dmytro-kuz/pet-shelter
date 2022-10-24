@@ -1,0 +1,71 @@
+@import '/src/styles/variables.scss';
+
+.pets-filter-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(5, 1fr);
+
+  @media (max-width: 695px) {
+    justify-content: center;
+  }
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+
+  .mat-form-field {
+    @media (max-width: 484px) {
+      width: 100%;
+    }
+  }
+
+  .pets-filter-input {
+    border-radius: 16px;
+    font-family: $roboto-font;
+    padding: 0.2rem;
+
+    @media (max-width: 484px) {
+      width: 80%;
+    }
+  }
+}
+
+.filter-buttons-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+
+  .pets-filter-button {
+    border: 1px solid $typo-color;
+    background: $second-color;
+    border-radius: 6px !important;
+    color: $typo-color;
+    min-width: 98px;
+    min-height: 44px;
+
+    &:hover {
+      background: $main-color;
+      outline: 1px solid $second-color;
+      outline-offset: -1px;
+      border-radius: 6px;
+      color: $second-color;
+    }
+  }
+
+  button + button {
+    margin-left: 1rem;
+  }
+}
+
+.pets-filter-input + .filter-buttons-wrapper {
+  margin: 0.4rem;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper,
+.mat-form-field-wrapper {
+  padding: 0;
+  margin: 0;
+}

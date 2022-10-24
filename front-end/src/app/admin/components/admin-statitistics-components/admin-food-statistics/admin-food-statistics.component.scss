@@ -1,0 +1,73 @@
+@import 'src/styles/variables.scss';
+.foods {
+  margin-top: 1.875rem;
+
+  h2 {
+    font-size: 25px;
+  }
+
+  form {
+    mat-form-field {
+      margin-right: 1.875rem;
+    }
+    .buttons {
+      margin-bottom: 2.813rem;
+      .button-default {
+        font-family: $roboto-font;
+        line-height: 1.75rem;
+        text-align: center;
+        transition: 0.3s;
+        &:hover {
+          background: $main-color;
+          outline: 1px solid $second-color;
+        }
+        span {
+          font-size: 14px;
+          padding: 0.625rem;
+        }
+      }
+      .button-reset {
+        font-family: $roboto-font;
+        line-height: 1.75rem;
+        text-align: center;
+        transition: 0.3s;
+        margin-left: 0.938rem;
+        &:hover {
+          background: rgb(241, 96, 96);
+          outline: 1px solid $second-color;
+        }
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $container) {
+  .foods {
+    form {
+      margin-left: 2.5rem;
+    }
+    h2 {
+      margin-left: 2.5rem;
+    }
+  }
+}
+@media screen and (max-width: $large) {
+  .foods {
+    h2 {
+      font-size: 20px;
+    }
+    .change-count {
+      margin-top: 1.875rem;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .foods {
+    form {
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<div class="main-auth">
+  <mat-card>
+    <mat-toolbar routerLink="/" class="auth-toolbar">
+      <mat-icon><span class="logo-title"> pets </span> </mat-icon>
+      <h1>ANIMAL SHELTER</h1></mat-toolbar
+    >
+    <form *ngIf="authForm" [formGroup]="authForm" class="login-form">
+      <h2 class="login-form-title">Введіть дані для авторизації</h2>
+
+      <mat-form-field appearance="outline">
+        <mat-label mat-label>Логін</mat-label>
+        <input formControlName="login" matInput placeholder="Введіть логін" />
+      </mat-form-field>
+      <div
+        class="error-message"
+        *ngIf="authForm.get('login')?.invalid && authForm.get('login')?.dirty && authForm.get('login')?.touched"
+      >
+        <p class="error-mes">*Довжина повинна бути не менше 3 символів</p>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label mat-label>Пароль</mat-label>
+        <input formControlName="password" matInput type="password" placeholder="Введіть пароль" />
+      </mat-form-field>
+      <div
+        class="error-message"
+        *ngIf="
+          authForm.get('password')?.invalid && authForm.get('password')?.dirty && authForm.get('password')?.touched
+        "
+      >
+        <p class="error-mes">*Довжина повинна бути не менше 3 символів</p>
+      </div>
+      <div *ngIf="errorMessage" class="error-message">
+        <p class="error-mes">{{ errorMessage }}</p>
+      </div>
+      <button mat-raised-button type="submit" (click)="onSubmit()">Ввійти</button>
+    </form>
+  </mat-card>
+</div>

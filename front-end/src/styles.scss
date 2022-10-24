@@ -1,0 +1,149 @@
+// *****************************************
+// ==========Clear def styles==============
+// *****************************************
+// Import Fonts
+
+//Import Variables
+@import './styles/variables';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $roboto-font;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+/* Links */
+
+a,
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  font-family: $balsamiq-font;
+}
+
+// *****************************************
+// ==========Clear def styles==============
+// *****************************************
+
+h1 {
+  font-family: $balsamiq-font;
+  font-weight: 700;
+  font-size: 2.5rem;
+
+  @media (max-width: 375px) {
+    font-size: 1.625rem;
+  }
+}
+
+h2 {
+  font-family: $balsamiq-font;
+  font-weight: 700;
+  font-size: 2.25rem;
+
+  @media (max-width: 375px) {
+    font-size: 1.375rem;
+  }
+}
+
+h3 {
+  font-family: $roboto-font;
+  font-weight: 600;
+  font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.375rem;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 1.25rem;
+  }
+}
+
+h4 {
+  font-family: $roboto-font;
+  font-weight: 600;
+  font-size: 1.125rem;
+
+  @media (max-width: 375px) {
+    font-size: 1rem;
+  }
+}
+
+p {
+  font-family: $roboto-font;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+a {
+  &:hover {
+    color: $main-color;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.container {
+  max-width: 1140px;
+  padding: 0 1rem;
+  margin: auto;
+
+  @media (max-width: 992px) {
+    max-width: 960px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 720px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 576px) {
+    max-width: 540px;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 375px) {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+}
+
+section {
+  margin: 2rem 0;
+}
+
+.spinner-position {
+  position: relative;
+  min-height: 60vh;
+}

@@ -1,0 +1,19 @@
+<div class="form-request">
+  <form *ngIf="modalDrugForm" [formGroup]="modalDrugForm">
+    <h2>{{ title }}</h2>
+    <div class="field" *ngIf="drugs">
+      <mat-form-field appearance="outline">
+        <mat-label>Оберіть ліки по назві </mat-label>
+        <mat-select formControlName="drug">
+          <mat-option *ngFor="let drug of drugs" [value]="drug">
+            {{ drug.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button type="button" class="delete-button" (click)="onSubmit(modalDrugForm)">
+      Видалити препарат
+    </button>
+  </form>
+</div>

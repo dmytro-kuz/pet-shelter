@@ -1,0 +1,41 @@
+<div (click)="toggleShowMore('photo')" class="show-more-photo">
+  <h3>Галерея</h3>
+  <button mat-button class="show-details">
+    <mat-icon *ngIf="!showMorePhoto">keyboard_arrow_down</mat-icon>
+    <mat-icon *ngIf="showMorePhoto">keyboard_arrow_up</mat-icon>
+  </button>
+</div>
+<div *ngIf="showMorePhoto" class="photo">
+  <div class="photo-galery">
+    <div class="galary-cards" *ngFor="let photo of newsDetail.photos; index as i">
+      <div class="galary-card">
+        <img src="{{ photo }}" alt="photo{{ i }}" />
+        <div class="card-buttons">
+          <button (click)="changePhoto.click()" mat-button class="show-details">
+            <input #changePhoto (input)="editPhoto($event, photo)" type="file" style="display: none" />
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button (click)="deletePhoto(photo)" mat-button class="show-details">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="galary-card card-add">
+      <form class="upload-file" enctype="multipart/form-data">
+        <mat-icon *ngIf="photosCount === 0" (click)="uploadFile.click()">attach_file</mat-icon>
+        <ul *ngIf="photosCount !== 0">
+          <li *ngFor="let photoName of photosSelectArray">
+            <mat-icon (click)="clearFilePhotoList(photoName)">clear</mat-icon> {{ photoName }}
+          </li>
+        </ul>
+        <input #uploadFile (input)="uploadNewFormPhoto($event)" type="file" multiple style="display: none" />
+        <p *ngIf="photosCount === 0; else chooseFile" (click)="uploadFile.click()">Виберіть фото</p>
+        <ng-template #chooseFile>
+          <p>Обрано файлів: {{ photosCount }}</p>
+          <button type="button" (click)="addNewPhoto()" mat-raised-button>Зберегти фото</button>
+        </ng-template>
+      </form>
+    </div>
+  </div>
+</div>

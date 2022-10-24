@@ -1,0 +1,75 @@
+@import '/src/styles/variables.scss';
+
+.pet-card {
+  position: relative;
+  border: 2px solid $section-color;
+  width: 200px;
+  height: 230px;
+  border-radius: 2.275rem;
+  transition: 0.2s;
+  z-index: 0;
+  overflow: hidden;
+  cursor: pointer;
+
+  @media (min-width: 425px) and (max-width: 500px) {
+    width: 170px;
+    height: 210px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &:hover {
+    box-shadow: 0 5px 15px $main-color;
+    transform: scale(1.02);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 42px;
+    background: rgba(51, 51, 51, 0.5);
+    border-radius: 0 0 2.275rem 2.275rem;
+    z-index: 2;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-family: $roboto-font;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.75rem;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: $typo-color;
+    text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-top: 11.8rem;
+    border-radius: 0 0 45px 45px;
+    transition: 0.2s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @media (min-width: 425px) and (max-width: 500px) {
+      padding-top: 10.6rem;
+      font-size: 1rem;
+    }
+  }
+
+  .pet-name {
+    width: 90%;
+    padding: 0 0.6rem;
+  }
+}

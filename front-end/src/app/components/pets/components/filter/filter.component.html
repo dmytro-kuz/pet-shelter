@@ -1,0 +1,18 @@
+<div class="container">
+  <form *ngIf="filterForm" [formGroup]="filterForm" (ngSubmit)="onSubmit(filterForm)">
+    <div class="pets-filter-wrapper">
+      <div class="pets-filter-input" *ngFor="let item of filterValue">
+        <mat-form-field appearance="outline">
+          <mat-label>{{ item.controlKey }}</mat-label>
+          <mat-select formControlName="{{ item.controlName }}">
+            <mat-option *ngFor="let val of item.controlValue" [value]="val">{{ val }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="filter-buttons-wrapper">
+        <button type="submit" class="pets-filter-button" mat-button>Шукати</button>
+        <button (click)="resetFilterForm()" class="pets-filter-button" mat-button>Очистити</button>
+      </div>
+    </div>
+  </form>
+</div>

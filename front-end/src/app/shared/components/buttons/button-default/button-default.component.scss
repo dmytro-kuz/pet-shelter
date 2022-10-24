@@ -1,0 +1,64 @@
+@import '/src/styles/variables.scss';
+
+.button-default {
+  padding: 0 4.25rem 0 2.375rem;
+  width: 288px;
+  height: 57px;
+  background: $second-color;
+  border: 1px solid $typo-color;
+  border-radius: 8px;
+  color: $typo-color;
+  font-family: $roboto-font;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: 0.3s;
+  box-shadow: 1px 1px 8px 2px #333;
+
+  &:hover {
+    background: $main-color;
+    outline: 1px solid $second-color;
+    border-radius: 8px;
+    color: $second-color;
+
+    span:after {
+      background: url('/assets/img/icons/paw-hover.svg') 0 0 / contain no-repeat;
+    }
+  }
+
+  & span {
+    position: relative;
+  }
+
+  & span::after {
+    content: '';
+    right: -42px;
+    bottom: -8px;
+    width: 36px;
+    height: 45px;
+    background: url('/assets/img/icons/paw.svg') 0 0 / contain no-repeat;
+    position: absolute;
+
+    @media (max-width: 425px) {
+      content: '';
+      right: -29px;
+      bottom: -1px;
+      width: 40px;
+      height: 30px;
+    }
+  }
+
+  .title {
+    display: inline-block;
+    min-width: 172px;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 1.2rem;
+    width: 268px;
+    height: 47px;
+  }
+}

@@ -1,0 +1,23 @@
+@import '/src/styles/variables.scss';
+
+.wrap {
+  padding: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+
+  .add-pet {
+    margin-left: 0.8rem;
+  }
+}
+
+.filter-btn {
+  border: 1px solid black;
+  max-width: fit-content;
+  margin-left: auto;
+
+  span {
+    margin-left: 0.6rem;
+  }
+}

@@ -1,0 +1,120 @@
+<mat-sidenav-container class="admin-wrapper" autosize>
+  <mat-sidenav #sidenav="matSidenav">
+    <mat-nav-list *ngIf="notificationInfo$ | async as notificationInfo">
+      <mat-list-item *ngIf="sidenav.mode !== 'over'" (click)="isExpanded = !isExpanded">
+        <mat-icon mat-list-icon class="arrow-btn" [ngClass]="{ rotated: isExpanded }"> arrow_forward_ios</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item
+        (click)="closeSideNAv()"
+        title="Головна"
+        [routerLink]="['/admin/dashboard']"
+        [routerLinkActive]="['active']"
+      >
+        <mat-icon mat-list-icon class="">dashboard</mat-icon>
+        <span *ngIf="isExpanded">Головна</span>
+      </mat-list-item>
+
+      <mat-list-item
+        (click)="closeSideNAv()"
+        title="Тварини"
+        [routerLink]="['/admin/pets']"
+        [routerLinkActive]="['active']"
+      >
+        <mat-icon mat-list-icon class="">pets </mat-icon>
+        <span *ngIf="isExpanded">Тварини</span>
+      </mat-list-item>
+
+      <mat-list-item
+        (click)="closeSideNAv()"
+        title="Новини"
+        [routerLink]="['/admin/news']"
+        [routerLinkActive]="['active']"
+      >
+        <mat-icon mat-list-icon class="item">feed</mat-icon>
+        <span *ngIf="isExpanded">Новини</span>
+      </mat-list-item>
+
+      <mat-list-item
+        (click)="closeSideNAv()"
+        title="Перетримка"
+        [routerLink]="['/admin/overstays']"
+        [routerLinkActive]="['active']"
+      >
+        <mat-icon
+          [matBadgeHidden]="notificationInfo.overstay === 0"
+          matBadge="{{ notificationInfo.overstay > 99 ? '99+' : notificationInfo.overstay }}"
+          matBadgeColor="warn"
+          mat-list-icon
+          >date_range</mat-icon
+        >
+        <span *ngIf="isExpanded">Перетримка</span>
+      </mat-list-item>
+
+      <mat-list-item
+        (click)="closeSideNAv()"
+        title="Всиновлення"
+        [routerLink]="['/admin/adopts']"
+        [routerLinkActive]="['active']"
+      >
+        <mat-icon
+          [matBadgeHidden]="notificationInfo.adopt === 0"
+          matBadge="{{ notificationInfo.adopt > 99 ? '99+' : notificationInfo.adopt }}"
+          matBadgeColor="warn"
+          mat-list-icon
+          class=""
+          >diversity_1
+        </mat-icon>
+        <span *ngIf="isExpanded">Всиновлення</span>
+      </mat-list-item>
+
+      <mat-list-item
+        (click)="closeSideNAv()"
+        title="Донати"
+        [routerLink]="['/admin/donate']"
+        [routerLinkActive]="['active']"
+      >
+        <mat-icon
+          [matBadgeHidden]="notificationInfo.donate === 0"
+          matBadge="{{ notificationInfo.donate > 99 ? '99+' : notificationInfo.donate }}"
+          matBadgeColor="warn"
+          mat-list-icon
+          class=""
+          >attach_money
+        </mat-icon>
+        <span *ngIf="isExpanded">Донати</span>
+      </mat-list-item>
+
+      <mat-list-item
+        (click)="closeSideNAv()"
+        title="Статистика"
+        [routerLink]="['/admin/statistics']"
+        [routerLinkActive]="['active']"
+      >
+        <mat-icon mat-list-icon class="">insights</mat-icon>
+        <span *ngIf="isExpanded">Статистика</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar class="toolbar">
+    <mat-icon class="icon-menu" *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">menu</mat-icon>
+
+    <div class="title-toolbar">
+      <mat-icon><span class="logo-title"> pets </span> </mat-icon>
+      <h1>ANIMAL SHELTER</h1>
+    </div>
+    <div class="toolbar-menu">
+      <a title="Головна">
+        <mat-icon mat-list-icon [routerLink]="['']" [routerLinkActive]="['active']">home</mat-icon>
+      </a>
+      <a title="Вихід">
+        <mat-icon
+          ><span [routerLink]="['/auth']" [routerLinkActive]="['active']" (click)="deleteToken()"> logout </span>
+        </mat-icon>
+      </a>
+    </div>
+  </mat-toolbar>
+  <div class="container content">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

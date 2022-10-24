@@ -1,0 +1,29 @@
+@import 'src/styles/variables.scss';
+
+section {
+  height: fit-content;
+}
+
+h2 {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  @media (max-width: $less-tablet) {
+    margin-bottom: 2rem;
+  }
+}
+
+:host ::ng-deep .splide__arrows {
+  position: relative;
+  top: 120px;
+
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+:host section {
+  @media (max-width: $medium) {
+    margin-bottom: 0;
+  }
+}

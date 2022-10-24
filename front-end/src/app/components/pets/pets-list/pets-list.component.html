@@ -1,0 +1,34 @@
+<div class="container">
+  <section class="spinner-position">
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <div class="pets-list" *ngIf="pets$ | async as pets">
+      <div class="pets-list-title-wrapper">
+        <h2 class="title-text">Обери свого улюбленця</h2>
+        <h4 class="subtitle-text">В нашому притулку Ви маєте можливість знайти собі вірного друга!</h4>
+      </div>
+      <div class="pets-list-filter">
+        <app-filter></app-filter>
+      </div>
+      <div class="pets-list-wrapper">
+        <div class="pet" *ngFor="let pet of pets.list">
+          <app-pet-card [pet]="pet"></app-pet-card>
+        </div>
+      </div>
+      <div class="empty-table-wrapper" *ngIf="!pets.list.length">
+        <mat-icon class="empty-table-icon">pets</mat-icon>
+        <h4 class="empty-table-msg">нічого не знайдено...</h4>
+      </div>
+      <div class="paginator-wrapper">
+        <mat-paginator
+          *ngIf="pets.list.length"
+          #paginator
+          [length]="pets.amount"
+          [pageSizeOptions]="[6, 9, 12]"
+          [pageSize]="6"
+          (page)="onPageChange($event)"
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </section>
+</div>
