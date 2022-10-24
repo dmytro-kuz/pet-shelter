@@ -1,5 +1,5 @@
 
-# Pets Shelterz
+# Pets Shelter
 ### This project was created to help homeless animals find their owners as soon as possible
 
 ### Please install Prettier -globally
