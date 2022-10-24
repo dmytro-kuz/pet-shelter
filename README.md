@@ -1,6 +1,7 @@
-<img src=![pets_logo](https://user-images.githubusercontent.com/92852665/197597776-de8bd6d8-4663-49b9-82e9-54ab2ed1de7f.png" width="150px" text-align="center">
+![pets_logo](https://user-images.githubusercontent.com/92852665/197597981-82d08e29-bd04-4bb2-8637-188346b91e7f.png)
 
-# Pets Shelter
+
+# Pets Shelterz
 ### This project was created to help homeless animals find their owners as soon as possible
 
 ### Please install Prettier -globally
