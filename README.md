@@ -1,5 +1,4 @@
-<img src="![pets_logo](https://user-images.githubusercontent.com/92852665/197597776-de8bd6d8-4663-49b9-82e9-54ab2ed1de7f.png)
-" width="150px" text-align="center">
+<img src=![pets_logo](https://user-images.githubusercontent.com/92852665/197597776-de8bd6d8-4663-49b9-82e9-54ab2ed1de7f.png" width="150px" text-align="center">
 
 # Pets Shelter
 ### This project was created to help homeless animals find their owners as soon as possible
