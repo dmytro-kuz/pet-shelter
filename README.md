@@ -3,10 +3,7 @@ Please install Prettier -globally
     npm i prettier -g
 It's necessary for auto formatting work correctly!
 
-
-
-[![Pets Shelter]
-<img src="https://shelter-cv.herokuapp.com/assets/img/logo/pets_logo.png" width="600">
+<img src="https://shelter-cv.herokuapp.com/assets/img/logo/pets_logo.png" width="100px">
 
 # Pets Shelter
 ### This project was created to help homeless animals find their owners as soon as possible
