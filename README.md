@@ -5,10 +5,11 @@ It's necessary for auto formatting work correctly!
 
 
 
-[![Pets Shelter](https://shelter-cv.herokuapp.com/assets/img/logo/pets_logo.png|width=100px)
+[![Pets Shelter]
+<img src="https://shelter-cv.herokuapp.com/assets/img/logo/pets_logo.png" width="600">
 
 # Pets Shelter
-##№ This project was created to help homeless animals find their owners as soon as possible
+### This project was created to help homeless animals find their owners as soon as possible
 
 ### Please install Prettier -globally
 
