@@ -5,7 +5,7 @@ It's necessary for auto formatting work correctly!
 
 
 
-[![Pets Shelter](https://shelter-cv.herokuapp.com/assets/img/logo/pets_logo.png = 250x250)
+[![Pets Shelter](https://shelter-cv.herokuapp.com/assets/img/logo/pets_logo.png =250x250)
 
 # Pets Shelter
 ##№ This project was created to help homeless animals find their owners as soon as possible
