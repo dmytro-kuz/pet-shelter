@@ -1,5 +1,3 @@
-![pets_logo](https://user-images.githubusercontent.com/92852665/197597981-82d08e29-bd04-4bb2-8637-188346b91e7f.png)
-
 
 # Pets Shelterz
 ### This project was created to help homeless animals find their owners as soon as possible
